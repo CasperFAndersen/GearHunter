@@ -8,12 +8,14 @@ namespace GearHunter.Core.Models
 {
     public class Company : User
     {
+        public int Id { get; set; }
         public string CVR { get; set; }
 
-        public Company(string name, string address, string zip, string city, string email, string password, bool isAdmin, string cvr) 
-            : base(name, address, zip, city, email, password, isAdmin)
+        public Company(int id, string name, string address, string zip, string city, string email, string password, bool isAdmin, bool isActive, string cvr) 
+            : base(id, name, address, zip, city, email, password, isAdmin, isActive)
         {
-            this.CVR = cvr;
+            Id = id;
+            CVR = cvr;
         }
     }
 

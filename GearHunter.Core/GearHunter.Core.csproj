@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B72BC11D-DB52-4AEF-A432-3694003A9396}</ProjectGuid>
+    <ProjectGuid>{F18B2A67-21D2-4115-8149-81136FCBC209}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GearHunter.Core</RootNamespace>
