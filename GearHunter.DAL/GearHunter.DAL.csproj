@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Faker.NET4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
+    </Reference>
+    <Reference Include="FizzWare.NBuilder, Version=5.0.0.138, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NBuilder.5.0.0\lib\net40\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -56,6 +62,14 @@
     <Compile Include="Migrations\201803261105324_Added IsActive, so it is possible to deactivate stuff.cs" />
     <Compile Include="Migrations\201803261105324_Added IsActive, so it is possible to deactivate stuff.Designer.cs">
       <DependentUpon>201803261105324_Added IsActive, so it is possible to deactivate stuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271433426_Removed Id from the subclasses of User.cs" />
+    <Compile Include="Migrations\201803271433426_Removed Id from the subclasses of User.Designer.cs">
+      <DependentUpon>201803271433426_Removed Id from the subclasses of User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271523451_Minor User-changes.cs" />
+    <Compile Include="Migrations\201803271523451_Minor User-changes.Designer.cs">
+      <DependentUpon>201803271523451_Minor User-changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +92,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803261105324_Added IsActive, so it is possible to deactivate stuff.resx">
       <DependentUpon>201803261105324_Added IsActive, so it is possible to deactivate stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271433426_Removed Id from the subclasses of User.resx">
+      <DependentUpon>201803271433426_Removed Id from the subclasses of User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271523451_Minor User-changes.resx">
+      <DependentUpon>201803271523451_Minor User-changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
