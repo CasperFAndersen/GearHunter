@@ -1,4 +1,4 @@
-﻿namespace GearHunter.Core.Models
+﻿namespace GearHunter.Core
 {
     public class Category
     {
