@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GearHunter.Core.Models;
+using GearHunter.Core;
 
 namespace GearHunter.DAL
 {

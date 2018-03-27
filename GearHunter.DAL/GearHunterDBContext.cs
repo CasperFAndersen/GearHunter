@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GearHunter.Core.Models;
+using GearHunter.Core;
 
 namespace GearHunter.DAL
 {
