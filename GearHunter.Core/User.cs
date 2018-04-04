@@ -13,9 +13,13 @@
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
 
-        public User(int id, string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        public User()
         {
-            Id = id;
+
+        }
+
+        public User(string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        {
             Name = name;
             Address = address;
             Zip = zip;
