@@ -40,11 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvertisementFacade.cs" />
+    <Compile Include="CategoryFacade.cs" />
+    <Compile Include="CompanyFacade.cs" />
+    <Compile Include="IndividualFacade.cs" />
+    <Compile Include="PhotoFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BLL\" />
-    <Folder Include="Contracts\" />
+    <ProjectReference Include="..\GearHunter.Core\GearHunter.Core.csproj">
+      <Project>{F18B2A67-21D2-4115-8149-81136FCBC209}</Project>
+      <Name>GearHunter.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GearHunter.DAL\GearHunter.DAL.csproj">
+      <Project>{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}</Project>
+      <Name>GearHunter.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
