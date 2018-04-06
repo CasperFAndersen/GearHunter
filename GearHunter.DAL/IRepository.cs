@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GearHunter.DAL
 {
-    interface IRepository<TEntity>
+    public interface IRepository<TEntity>
     {
         void Add(TEntity entity);
         void Delete(TEntity entity);
