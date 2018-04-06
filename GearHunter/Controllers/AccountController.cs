@@ -6,18 +6,17 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
+using GearHunter.Service.Models;
+using GearHunter.Service.Providers;
+using GearHunter.Service.Results;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using GearHunter.Models;
-using GearHunter.Providers;
-using GearHunter.Results;
 
-namespace GearHunter.Controllers
+namespace GearHunter.Service.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace GearHunter.Models
+namespace GearHunter.Service.Models
 {
     // Models returned by AccountController actions.
 

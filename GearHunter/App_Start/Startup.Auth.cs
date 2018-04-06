@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using GearHunter.Service.Models;
+using GearHunter.Service.Providers;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using GearHunter.Providers;
-using GearHunter.Models;
 
-namespace GearHunter
+namespace GearHunter.Service
 {
     public partial class Startup
     {
