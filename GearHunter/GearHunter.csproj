@@ -228,9 +228,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdvertisementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -358,6 +357,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GearHunter.Core\GearHunter.Core.csproj">
+      <Project>{f18b2a67-21d2-4115-8149-81136fcbc209}</Project>
+      <Name>GearHunter.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GearHunter.DAL\GearHunter.DAL.csproj">
+      <Project>{91abf541-9cb3-4fae-ac75-3a6ac8d24bc5}</Project>
+      <Name>GearHunter.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
