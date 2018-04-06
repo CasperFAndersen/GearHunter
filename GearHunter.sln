@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter", "GearHunter\GearHunter.csproj", "{D39D242E-9BDF-4F50-86BE-7A1956D6B369}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Service", "GearHunter\GearHunter.Service.csproj", "{D39D242E-9BDF-4F50-86BE-7A1956D6B369}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Tests", "GearHunter.Tests\GearHunter.Tests.csproj", "{FA709B5A-462A-4E59-ADA5-1A86B4E11F03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Core", "GearHunter.Core\GearHunter.Core.csproj", "{F18B2A67-21D2-4115-8149-81136FCBC209}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.DAL", "GearHunter.DAL\GearHunter.DAL.csproj", "{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.BLL", "GearHunter.BLL\GearHunter.BLL.csproj", "{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

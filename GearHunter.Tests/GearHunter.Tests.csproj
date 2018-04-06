@@ -109,9 +109,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GearHunter\GearHunter.csproj">
+    <ProjectReference Include="..\GearHunter\GearHunter.Service.csproj">
       <Project>{D39D242E-9BDF-4F50-86BE-7A1956D6B369}</Project>
-      <Name>GearHunter</Name>
+      <Name>GearHunter.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GearHunter;
-using GearHunter.Controllers;
+using GearHunter.Service.Controllers;
 
 namespace GearHunter.Tests.Controllers
 {

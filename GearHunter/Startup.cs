@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GearHunter.Service;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(GearHunter.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace GearHunter
+namespace GearHunter.Service
 {
     public partial class Startup
     {
