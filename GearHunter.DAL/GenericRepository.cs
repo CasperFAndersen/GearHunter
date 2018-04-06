@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GearHunter.DAL
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private GearHunterDbContext context;
         private DbSet<TEntity> dbSet;
-        public Repository(GearHunterDbContext context)
+        public GenericRepository(GearHunterDbContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

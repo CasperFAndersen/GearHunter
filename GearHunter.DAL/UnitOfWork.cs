@@ -9,64 +9,58 @@ namespace GearHunter.DAL
     public class UnitOfWork : IDisposable
     {
         private GearHunterDbContext context = new GearHunterDbContext();
-        private Repository<Advertisement> advertisementRepository;
-        private Repository<Category> categoryRepository;
-        private Repository<Company> companyRepository;
-        private Repository<Individual> individualRepository;
-        private Repository<Photo> photoRepository;
-        private Repository<User> userRepository;
+        private GenericRepository<Advertisement> advertisementRepository;
+        private GenericRepository<Category> categoryRepository;
+        private GenericRepository<Company> companyRepository;
+        private GenericRepository<Individual> individualRepository;
+        private GenericRepository<Photo> photoRepository;
+        private GenericRepository<User> userRepository;
 
-        //Repository for the Advertisement
-        public Repository<Advertisement> AdvertisementRepository
+        public GenericRepository<Advertisement> AdvertisementRepository
         {
             get
             {
-                return this.advertisementRepository ?? new Repository<Advertisement>(context);
+                return this.advertisementRepository ?? new GenericRepository<Advertisement>(context);
             }
         }
 
-        //Repository for the category
-        public Repository<Category> CategoryRepository
+        public GenericRepository<Category> CategoryRepository
         {
             get
             {
-                return this.categoryRepository ?? new Repository<Category>(context);
+                return this.categoryRepository ?? new GenericRepository<Category>(context);
             }
         }
 
-        //Repository for the company
-        public Repository<Company> CompanyRepository
+        public GenericRepository<Company> CompanyRepository
         {
             get
             {
-                return this.companyRepository ?? new Repository<Company>(context);
+                return this.companyRepository ?? new GenericRepository<Company>(context);
             }
         }
 
-        //Repository for the Individual
-        public Repository<Individual> IndividualRepository
+        public GenericRepository<Individual> IndividualRepository
         {
             get
             {
-                return this.individualRepository ?? new Repository<Individual>(context);
+                return this.individualRepository ?? new GenericRepository<Individual>(context);
             }
         }
 
-        //Repository for the Photos
-        public Repository<Photo> PhotoRepository
+        public GenericRepository<Photo> PhotoRepository
         {
             get
             {
-                return this.photoRepository ?? new Repository<Photo>(context);
+                return this.photoRepository ?? new GenericRepository<Photo>(context);
             }
         }
 
-        //Repository for the Users
-        public Repository<User> UserRepository
+        public GenericRepository<User> UserRepository
         {
             get
             {
-                return this.userRepository ?? new Repository<User>(context);
+                return this.userRepository ?? new GenericRepository<User>(context);
             }
         }
 
