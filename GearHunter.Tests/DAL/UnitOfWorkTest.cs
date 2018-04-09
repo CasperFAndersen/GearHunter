@@ -18,11 +18,15 @@ namespace GearHunter.Tests.DAL
 
             Individual individual = new Individual{ Id = 000000, Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
             unitOfWork.IndividualRepository.Add(individual);
+            unitOfWork.Save();
+
             int afterInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
             Assert.AreEqual(beforeInsert, afterInsert - 1);
 
             unitOfWork.IndividualRepository.Delete(individual);
+            unitOfWork.Save();
+
         }
 
         [TestMethod]
@@ -30,14 +34,15 @@ namespace GearHunter.Tests.DAL
         {
             Category category = new Category { Id = 999999, Name = "CategoryTest" };
             unitOfWork.CategoryRepository.Add(category);
+            
 
             Category categoryFromDb = unitOfWork.CategoryRepository.GetById(999999);
 
             Assert.IsNotNull(categoryFromDb);
             Assert.AreEqual(category, categoryFromDb);
 
-
             unitOfWork.CategoryRepository.Delete(category);
+
         }
 
         [TestMethod]
@@ -56,11 +61,14 @@ namespace GearHunter.Tests.DAL
 
             unitOfWork.AdvertisementRepository.Add(advertisement);
 
+
             Assert.IsNotNull(unitOfWork.AdvertisementRepository.GetById(99999));
 
             unitOfWork.AdvertisementRepository.Delete(advertisement);
 
             Assert.IsNull(unitOfWork.AdvertisementRepository.GetById(99999));
+
+
         }
 
         [TestMethod]
@@ -70,7 +78,6 @@ namespace GearHunter.Tests.DAL
 
             unitOfWork.CompanyRepository.Add(company);
 
-
             Assert.AreEqual("CompanyNameTest", company.Name);
             Assert.IsFalse(company.IsActive);
 
@@ -78,6 +85,7 @@ namespace GearHunter.Tests.DAL
             company.IsActive = true;
 
             unitOfWork.CompanyRepository.Update(company);
+
             company = unitOfWork.CompanyRepository.GetById(99999);
 
             Assert.AreEqual("UpdatedCompanyNameTest", company.Name);
@@ -95,12 +103,15 @@ namespace GearHunter.Tests.DAL
             Individual individual = new Individual { Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
 
             unitOfWork.IndividualRepository.Add(individual);
+            unitOfWork.Save();
 
             int afterInsert = unitOfWork.IndividualRepository.FindAllAsync().Result.Count;
 
             Assert.AreEqual(beforeInsert, afterInsert - 1);
 
             unitOfWork.IndividualRepository.Delete(individual);
+            unitOfWork.Save();
+
         }
 
         [TestMethod]
@@ -115,6 +126,7 @@ namespace GearHunter.Tests.DAL
             Assert.AreEqual(category, categoryFromDb);
 
             unitOfWork.CategoryRepository.Delete(category);
+
         }
     }
 }

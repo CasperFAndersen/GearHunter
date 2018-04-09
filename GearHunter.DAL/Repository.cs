@@ -33,7 +33,7 @@ namespace GearHunter.DAL
 
         public List<TEntity> GetAll()
         {
-            return dbSet.AsNoTracking().ToList();
+            return dbSet.ToList();
         }
 
         public TEntity GetById(int id)
