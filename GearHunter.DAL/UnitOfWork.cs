@@ -6,7 +6,7 @@ using GearHunter.Core;
 
 namespace GearHunter.DAL
 {
-    class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable
     {
         private GearHunterDbContext context = new GearHunterDbContext();
         private Repository<Advertisement> advertisementRepository;
