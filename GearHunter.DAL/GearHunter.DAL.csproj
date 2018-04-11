@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201803271523451_Minor User-changes.Designer.cs">
       <DependentUpon>201803271523451_Minor User-changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804050957583_test data updated.cs" />
+    <Compile Include="Migrations\201804050957583_test data updated.Designer.cs">
+      <DependentUpon>201804050957583_test data updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GenericRepository.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803271523451_Minor User-changes.resx">
       <DependentUpon>201803271523451_Minor User-changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804050957583_test data updated.resx">
+      <DependentUpon>201804050957583_test data updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

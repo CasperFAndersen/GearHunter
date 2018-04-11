@@ -10,6 +10,7 @@ using GearHunter.Service.Controllers;
 
 namespace GearHunter.Tests.Controllers
 {
+    /*
     [TestClass]
     public class ValuesControllerTest
     {
@@ -76,6 +77,6 @@ namespace GearHunter.Tests.Controllers
             controller.Delete(5);
 
             // Assert
-        }
-    }
+        } 
+    }*/
 }

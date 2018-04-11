@@ -69,6 +69,11 @@ namespace GearHunter.DAL
             context.SaveChanges();
         }
 
+        public void SaveAsync()
+        {
+           context.SaveChangesAsync();
+        }
+
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
