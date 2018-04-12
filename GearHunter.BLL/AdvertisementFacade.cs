@@ -22,16 +22,19 @@ namespace GearHunter.BLL
         public void AddAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Add(advertisement);
+            _unitOfWork.Save();
         }
 
         public void UpdateAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Update(advertisement);
+            _unitOfWork.Save();
         }
 
         public void DeleteAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Delete(advertisement);
+            _unitOfWork.Save();
         }
 
         public Task<List<Advertisement>> GetAdvertisementsAsync()

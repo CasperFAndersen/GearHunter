@@ -8,7 +8,7 @@ using GearHunter.DAL;
 
 namespace GearHunter.BLL
 {
-    class IndividualFacade
+    public class IndividualFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
@@ -25,16 +25,19 @@ namespace GearHunter.BLL
         public void AddIndividual(Individual individual)
         {
             _unitOfWork.IndividualRepository.Add(individual);
+            _unitOfWork.Save();
         }
 
         public void UpdateIndividual(Individual individual)
         {
             _unitOfWork.IndividualRepository.Update(individual);
+            _unitOfWork.Save();
         }
 
         public void DeleteIndividual(Individual individual)
         {
             _unitOfWork.IndividualRepository.Delete(individual);
+            _unitOfWork.Save();
         }
 
         public Task<List<Individual>> GetIndividualsAsync()

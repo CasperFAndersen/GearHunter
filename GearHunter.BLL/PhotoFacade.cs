@@ -8,7 +8,7 @@ using GearHunter.DAL;
 
 namespace GearHunter.BLL
 {
-    class PhotoFacade
+    public class PhotoFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
@@ -25,16 +25,19 @@ namespace GearHunter.BLL
         public void AddPhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Add(photo);
+            _unitOfWork.Save();
         }
 
         public void UpdatePhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Update(photo);
+            _unitOfWork.Save();
         }
 
         public void DeletePhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Delete(photo);
+            _unitOfWork.Save();
         }
 
         public Task<List<Photo>> GetPhotosAsync()

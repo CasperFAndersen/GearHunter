@@ -8,7 +8,7 @@ using GearHunter.DAL;
 
 namespace GearHunter.BLL
 {
-    class CompanyFacade
+    public class CompanyFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
@@ -25,16 +25,19 @@ namespace GearHunter.BLL
         public void AddCompany(Company company)
         {
             _unitOfWork.CompanyRepository.Add(company);
+            _unitOfWork.Save();
         }
 
         public void UpdateCompany(Company company)
         {
             _unitOfWork.CompanyRepository.Update(company);
+            _unitOfWork.Save();
         }
 
         public void DeleteCompany(Company company)
         {
             _unitOfWork.CompanyRepository.Delete(company);
+            _unitOfWork.Save();
         }
 
         public Task<List<Company>> GetCompanysAsync()

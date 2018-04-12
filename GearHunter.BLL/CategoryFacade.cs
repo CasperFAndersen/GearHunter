@@ -25,16 +25,19 @@ namespace GearHunter.BLL
         public void AddCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Add(category);
+            _unitOfWork.Save();
         }
 
         public void UpdateCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Update(category);
+            _unitOfWork.Save();
         }
 
         public void DeleteCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Delete(category);
+            _unitOfWork.Save();
         }
 
         public Task<List<Category>> GetCategorysAsync()
