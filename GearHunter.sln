@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Service", "GearHunter\GearHunter.Service.csproj", "{D39D242E-9BDF-4F50-86BE-7A1956D6B369}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Tests", "GearHunter.Tests\GearHunter.Tests.csproj", "{FA709B5A-462A-4E59-ADA5-1A86B4E11F03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Core", "GearHunter.Core\GearHunter.Core.csproj", "{F18B2A67-21D2-4115-8149-81136FCBC209}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.DAL", "GearHunte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.BLL", "GearHunter.BLL\GearHunter.BLL.csproj", "{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearHunter.Service", "GearHunter.Service\GearHunter.Service.csproj", "{7C20AF0C-0DE0-4DC0-944E-B80ED8993A03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D39D242E-9BDF-4F50-86BE-7A1956D6B369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D39D242E-9BDF-4F50-86BE-7A1956D6B369}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D39D242E-9BDF-4F50-86BE-7A1956D6B369}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D39D242E-9BDF-4F50-86BE-7A1956D6B369}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA709B5A-462A-4E59-ADA5-1A86B4E11F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA709B5A-462A-4E59-ADA5-1A86B4E11F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA709B5A-462A-4E59-ADA5-1A86B4E11F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57F38CD6-54BC-4DD2-8A14-E013BE4C7284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C20AF0C-0DE0-4DC0-944E-B80ED8993A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C20AF0C-0DE0-4DC0-944E-B80ED8993A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C20AF0C-0DE0-4DC0-944E-B80ED8993A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C20AF0C-0DE0-4DC0-944E-B80ED8993A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,6 @@ using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GearHunter;
-using GearHunter.Service.Controllers;
 
 namespace GearHunter.Tests.Controllers
 {
