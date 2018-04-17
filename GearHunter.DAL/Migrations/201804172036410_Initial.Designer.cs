@@ -7,13 +7,13 @@ namespace GearHunter.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedIsActivesoitispossibletodeactivatestuff : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedIsActivesoitispossibletodeactivatestuff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803261105324_Added IsActive, so it is possible to deactivate stuff"; }
+            get { return "201804172036410_Initial"; }
         }
         
         string IMigrationMetadata.Source

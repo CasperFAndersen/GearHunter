@@ -16,17 +16,24 @@ namespace GearHunter.Tests.DAL
         {
             int beforeInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
+            Assert.AreEqual(0, beforeInsert);
+
             Individual individual = new Individual{ Id = 000000, Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
             int afterInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
-            Assert.AreEqual(beforeInsert, afterInsert - 1);
+            Assert.AreEqual(0, afterInsert - 1);
 
             unitOfWork.IndividualRepository.Delete(individual);
             unitOfWork.Save();
+        }
 
+        [TestMethod]
+        public void GetAllAdvertisements()
+        {
+            Assert.AreNotEqual(0, unitOfWork.AdvertisementRepository.GetAll().Count);
         }
 
         [TestMethod]

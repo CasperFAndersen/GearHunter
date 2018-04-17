@@ -110,12 +110,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GearHunter.BLL\GearHunter.BLL.csproj">
+      <Project>{57f38cd6-54bc-4dd2-8a14-e013be4c7284}</Project>
+      <Name>GearHunter.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GearHunter.Core\GearHunter.Core.csproj">
       <Project>{F18B2A67-21D2-4115-8149-81136FCBC209}</Project>
       <Name>GearHunter.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\GearHunter.DAL\GearHunter.DAL.csproj">
-      <Project>{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}</Project>
+      <Project>{636972b6-7752-4c0a-b932-7fb4aa78121b}</Project>
       <Name>GearHunter.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\GearHunter.Service\GearHunter.Service.csproj">

@@ -3,7 +3,7 @@ namespace GearHunter.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDBcreation : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -22,12 +22,16 @@ namespace GearHunter.DAL.Migrations
                         City = c.String(),
                         IsDeliverable = c.Boolean(nullable: false),
                         IsRentable = c.Boolean(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
                         Created = c.DateTime(),
                         Category_Id = c.Int(),
+                        User_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Categories", t => t.Category_Id)
-                .Index(t => t.Category_Id);
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .Index(t => t.Category_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.Categories",
@@ -61,7 +65,9 @@ namespace GearHunter.DAL.Migrations
                         City = c.String(),
                         Email = c.String(),
                         Password = c.String(),
+                        Phone = c.String(),
                         IsAdmin = c.Boolean(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
                         CVR = c.String(),
                         IsValidated = c.Boolean(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
@@ -72,9 +78,11 @@ namespace GearHunter.DAL.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Advertisements", "User_Id", "dbo.Users");
             DropForeignKey("dbo.Photos", "Advertisement_Id", "dbo.Advertisements");
             DropForeignKey("dbo.Advertisements", "Category_Id", "dbo.Categories");
             DropIndex("dbo.Photos", new[] { "Advertisement_Id" });
+            DropIndex("dbo.Advertisements", new[] { "User_Id" });
             DropIndex("dbo.Advertisements", new[] { "Category_Id" });
             DropTable("dbo.Users");
             DropTable("dbo.Photos");

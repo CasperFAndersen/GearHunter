@@ -1,12 +1,11 @@
+using GearHunter.Core;
+
 namespace GearHunter.DAL.Migrations
 {
-    using FizzWare.NBuilder;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using GearHunter.Core;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GearHunter.DAL.GearHunterDbContext>
     {
@@ -15,7 +14,7 @@ namespace GearHunter.DAL.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(GearHunterDbContext context)
+        protected override void Seed(GearHunter.DAL.GearHunterDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -28,7 +27,7 @@ namespace GearHunter.DAL.Migrations
             //    .With(x => x.Phone = Faker.Phone.Number()).Build();
 
             //context.Individuals.AddOrUpdate(x => x.Id, individuals.ToArray());
-            
+
 
             //Categories
             Category categoryGuitar = new Category() { Name = "Guitar" };
@@ -47,7 +46,7 @@ namespace GearHunter.DAL.Migrations
             Individual Mikkel = new Individual("Mikkel Paulsen", "DenDerVej 3", "9000", "Aalborg", "Mikkel@fakemail.dk", "password3", "33333333", false, true, true);
             Individual Anders = new Individual("Anders Andersen", "DenDerVej 4", "9000", "Aalborg", "Anders@fakemail.dk", "password4", "44444444", false, true, false);
             Individual Bent = new Individual("Bent Bentsen", "DenDerVej 5", "9000", "Aalborg", "Bent@fakemail.dk", "password5", "55555555", false, true, true);
-                
+
             context.Individuals.AddOrUpdate(x => x.Id, Casper, Stefan, Mikkel, Anders, Bent);
 
             //Companies
@@ -55,7 +54,7 @@ namespace GearHunter.DAL.Migrations
             Company MusikUdlejningAps = new Company("Musik Udlejning Aps", "DenDerVej 6", "9400", "Noerresundby", "MU@fakemail.dk", "password5", "11111111", false, true, "MusikUdlejningCVR");
             Company MejelarmIvs = new Company("MejeLarm IVS", "DenDerVej 7", "9400", "Noerresundby", "ML@fakemail.dk", "password5", "22222222", false, true, "MejeLarmCVR");
             Company MusikLageretAps = new Company("Musik Lageret Aps", "DenDerVej 8", "9400", "Noerresundby", "ML@fakemail.dk", "password5", "33333333", false, true, "MusikLageretCVR");
-                context.Companies.AddOrUpdate(x => x.Id, MusikUdlejningAps, MejelarmIvs, MusikLageretAps);
+            context.Companies.AddOrUpdate(x => x.Id, MusikUdlejningAps, MejelarmIvs, MusikLageretAps);
 
             //Advertisements
             context.Advertisements.AddOrUpdate(x => x.Id,
@@ -69,8 +68,6 @@ namespace GearHunter.DAL.Migrations
                 new Advertisement("Kort Keyboard8", "Maerke8", "Model8", 1, "D8", "A8", "9200", "Aalborg", true, true, true, DateTime.Now, null, categoryKlaver, MusikLageretAps),
                 new Advertisement("Tromme stikker", "Maerke9", "Model9", 1, "D9", "A9", "9400", "Aalborg", true, true, true, DateTime.Now, null, categoryTilbehoer, MusikLageretAps)
                 );
-
-
         }
     }
 }

@@ -56,7 +56,7 @@
       <Name>GearHunter.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\GearHunter.DAL\GearHunter.DAL.csproj">
-      <Project>{91ABF541-9CB3-4FAE-AC75-3A6AC8D24BC5}</Project>
+      <Project>{636972b6-7752-4c0a-b932-7fb4aa78121b}</Project>
       <Name>GearHunter.DAL</Name>
     </ProjectReference>
   </ItemGroup>
