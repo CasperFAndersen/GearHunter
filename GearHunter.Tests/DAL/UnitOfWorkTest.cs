@@ -42,14 +42,12 @@ namespace GearHunter.Tests.DAL
             Category category = new Category { Id = 999999, Name = "CategoryTest" };
             unitOfWork.CategoryRepository.Add(category);
             
-
             Category categoryFromDb = unitOfWork.CategoryRepository.GetById(999999);
 
             Assert.IsNotNull(categoryFromDb);
             Assert.AreEqual(category, categoryFromDb);
 
             unitOfWork.CategoryRepository.Delete(category);
-
         }
 
         [TestMethod]
@@ -74,8 +72,6 @@ namespace GearHunter.Tests.DAL
             unitOfWork.AdvertisementRepository.Delete(advertisement);
 
             Assert.IsNull(unitOfWork.AdvertisementRepository.GetById(99999));
-
-
         }
 
         [TestMethod]
@@ -118,7 +114,6 @@ namespace GearHunter.Tests.DAL
 
             unitOfWork.IndividualRepository.Delete(individual);
             unitOfWork.Save();
-
         }
 
         [TestMethod]
@@ -133,7 +128,6 @@ namespace GearHunter.Tests.DAL
             Assert.AreEqual(category, categoryFromDb);
 
             unitOfWork.CategoryRepository.Delete(category);
-
         }
     }
 }
