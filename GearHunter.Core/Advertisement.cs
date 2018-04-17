@@ -20,6 +20,8 @@ namespace GearHunter.Core
         public DateTime? Created { get; set; }
         public List<Photo> Photos { get; set; }
         public Category Category { get; set; }
+        public User User { get; set; }
+ 
 
         public Advertisement()
         {
@@ -28,7 +30,7 @@ namespace GearHunter.Core
 
         public Advertisement(string catchyHeader, string brand, string model, double price, string description, 
             string address, string zip, string city, bool isDeliverable, bool isRentable, bool isActive, DateTime? created, 
-            List<Photo> photos, Category category)
+            List<Photo> photos, Category category, User user)
         {
             this.CatchyHeader = catchyHeader;
             this.Brand = brand;
@@ -44,6 +46,7 @@ namespace GearHunter.Core
             this.Created = created;
             this.Photos = photos;
             this.Category = category;
+            this.User = user;
         }
     }
 }

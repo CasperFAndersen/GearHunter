@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
 
+
 namespace GearHunter.BLL
 {
     public class IndividualFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private UserHelper userHelper = new UserHelper();
 
         public IEnumerable<Individual> GetIndividuals()
         {
@@ -24,14 +26,24 @@ namespace GearHunter.BLL
 
         public void AddIndividual(Individual individual)
         {
-            _unitOfWork.IndividualRepository.Add(individual);
-            _unitOfWork.Save();
+            
+            if (!userHelper.EmailAlreadyExists(individual.Email))
+            {
+                _unitOfWork.IndividualRepository.Add(individual);
+                _unitOfWork.Save();
+            }
+            else throw new EmailAlreadyExistsException("Individual");
+             
         }
 
         public void UpdateIndividual(Individual individual)
         {
-            _unitOfWork.IndividualRepository.Update(individual);
-            _unitOfWork.Save();
+            if (!userHelper.EmailAlreadyExists(individual.Email))
+            {
+                _unitOfWork.IndividualRepository.Update(individual);
+                _unitOfWork.Save();
+            }
+            else throw new EmailAlreadyExistsException("individual");
         }
 
         public void DeleteIndividual(Individual individual)
@@ -48,6 +60,11 @@ namespace GearHunter.BLL
         public Task<Individual> GetIndividualAsync(int id)
         {
             return _unitOfWork.IndividualRepository.FindByIdAsync(id);
+        }
+
+        public Individual GetByEmail(string email)
+        {
+            return _unitOfWork.IndividualRepository.GetByEmail(email);
         }
     }
 }

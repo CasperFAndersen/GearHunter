@@ -53,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyRepository.cs" />
     <Compile Include="GearHunterDbContext.cs" />
+    <Compile Include="IndividualRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Migrations\201803261054105_Initial DB creation.cs" />
     <Compile Include="Migrations\201803261054105_Initial DB creation.Designer.cs">
@@ -74,6 +76,10 @@
     <Compile Include="Migrations\201804050957583_test data updated.cs" />
     <Compile Include="Migrations\201804050957583_test data updated.Designer.cs">
       <DependentUpon>201804050957583_test data updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804170842138_UserAddedOnAdvertisement.cs" />
+    <Compile Include="Migrations\201804170842138_UserAddedOnAdvertisement.Designer.cs">
+      <DependentUpon>201804170842138_UserAddedOnAdvertisement.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804050957583_test data updated.resx">
       <DependentUpon>201804050957583_test data updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804170842138_UserAddedOnAdvertisement.resx">
+      <DependentUpon>201804170842138_UserAddedOnAdvertisement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

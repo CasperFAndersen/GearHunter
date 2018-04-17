@@ -11,6 +11,7 @@ namespace GearHunter.BLL
     public class CompanyFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private UserHelper userHelper = new UserHelper();
 
         public IEnumerable<Company> GetCompanys()
         {
@@ -24,14 +25,27 @@ namespace GearHunter.BLL
 
         public void AddCompany(Company company)
         {
-            _unitOfWork.CompanyRepository.Add(company);
-            _unitOfWork.Save();
+            if (!userHelper.EmailAlreadyExists(company.Email))
+            {
+                _unitOfWork.CompanyRepository.Add(company);
+                _unitOfWork.Save();
+            }
+            else throw new EmailAlreadyExistsException("Company");
         }
 
         public void UpdateCompany(Company company)
         {
-            _unitOfWork.CompanyRepository.Update(company);
-            _unitOfWork.Save();
+            if (!userHelper.EmailAlreadyExists(company.Email))
+            {
+                _unitOfWork.CompanyRepository.Update(company);
+                _unitOfWork.Save();
+            }
+            else throw new EmailAlreadyExistsException("Company");
+        }
+
+        public Company GetByEmail(string email)
+        {
+            return _unitOfWork.CompanyRepository.GetByEmail(email);
         }
 
         public void DeleteCompany(Company company)

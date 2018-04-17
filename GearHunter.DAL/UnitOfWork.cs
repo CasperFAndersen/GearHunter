@@ -11,8 +11,8 @@ namespace GearHunter.DAL
         private GearHunterDbContext context = new GearHunterDbContext();
         private GenericRepository<Advertisement> advertisementRepository;
         private GenericRepository<Category> categoryRepository;
-        private GenericRepository<Company> companyRepository;
-        private GenericRepository<Individual> individualRepository;
+        private CompanyRepository companyRepository;
+        private IndividualRepository individualRepository;
         private GenericRepository<Photo> photoRepository;
         private GenericRepository<User> userRepository;
 
@@ -32,19 +32,19 @@ namespace GearHunter.DAL
             }
         }
 
-        public GenericRepository<Company> CompanyRepository
+        public CompanyRepository CompanyRepository
         {
             get
             {
-                return this.companyRepository ?? new GenericRepository<Company>(context);
+                return this.companyRepository ?? new CompanyRepository(context);
             }
         }
 
-        public GenericRepository<Individual> IndividualRepository
+        public IndividualRepository IndividualRepository
         {
             get
             {
-                return this.individualRepository ?? new GenericRepository<Individual>(context);
+                return this.individualRepository ?? new IndividualRepository(context);
             }
         }
 
