@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GearHunter.DAL;
 using GearHunter.Core;
@@ -16,7 +17,6 @@ namespace GearHunter.Tests.DAL
         {
             Individual individual = new Individual
             {
-                Id = 99999,
                 Name = "individualTestName",
                 Password = "idvidualTestPassword",
                 Address = "individualAdressTest",
@@ -26,12 +26,16 @@ namespace GearHunter.Tests.DAL
             };
 
             unitOfWork.IndividualRepository.Add(individual);
+            unitOfWork.Save();
 
-            Individual individualFromDB = unitOfWork.IndividualRepository.GetById(99999);
+            Individual individualFromDB = unitOfWork.IndividualRepository.GetById(unitOfWork.IndividualRepository.GetAll().Last().Id);
 
             Assert.IsNotNull(individualFromDB);
             Assert.AreEqual(individual.Name, individualFromDB.Name);
             Assert.IsFalse(individualFromDB.IsActive);
+
+            unitOfWork.IndividualRepository.Delete(individual);
+            unitOfWork.Save();
 
         }
 
@@ -41,8 +45,16 @@ namespace GearHunter.Tests.DAL
             int beforeInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
 
-            Individual individual = new Individual{ Id = 000000, Name = "individualTestNavn", Password = "idvidualTestKode",
-                                                    Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
+            Individual individual = new Individual
+            {
+                Id = 000000,
+                Name = "individualTestNavn",
+                Password = "idvidualTestKode",
+                Address = "individualVejTest25",
+                IsActive = false,
+                IsAdmin = false,
+                IsValidated = false
+            };
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
@@ -57,26 +69,27 @@ namespace GearHunter.Tests.DAL
         [TestMethod]
         public void GetByIdTest()
         {
-            Category category = new Category { Id = 999999, Name = "CategoryTest" };
+            Category category = new Category { Name = "CategoryTest" };
             unitOfWork.CategoryRepository.Add(category);
-            
-            Category categoryFromDb = unitOfWork.CategoryRepository.GetById(999999);
+            unitOfWork.Save();
+
+            Category categoryFromDb = unitOfWork.CategoryRepository.GetById(unitOfWork.CategoryRepository.GetAll().Last().Id);
 
             Assert.IsNotNull(categoryFromDb);
             Assert.AreEqual(category, categoryFromDb);
 
             unitOfWork.CategoryRepository.Delete(category);
+            unitOfWork.Save();
         }
 
 
 
-        /*
+
         [TestMethod]
         public void DeleteTest()
         {
             Advertisement advertisement = new Advertisement
             {
-                Id = 99999,
                 CatchyHeader = "CatchyHeaderTest",
                 Created = DateTime.Now,
                 IsActive = false,
@@ -95,30 +108,31 @@ namespace GearHunter.Tests.DAL
 
             unitOfWork.AdvertisementRepository.Add(advertisement);
             unitOfWork.Save();
-            unitOfWork.Dispose();
+
 
             int beforeDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
 
-            Advertisement advertisementFromDB = unitOfWork.AdvertisementRepository.GetById(99999);
+            Advertisement advertisementFromDB = unitOfWork.AdvertisementRepository.GetById(unitOfWork.AdvertisementRepository.GetAll().Last().Id);
 
             Assert.IsNotNull(advertisementFromDB);
             Assert.AreEqual(advertisement.User.Name, advertisementFromDB.User.Name);
 
             unitOfWork.AdvertisementRepository.Delete(advertisement);
             unitOfWork.Save();
-            unitOfWork.Dispose();
+
 
             int AfterDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
 
-            Assert.AreEqual(beforeDelete, AfterDelete - 1);
-        } */
+            Assert.AreEqual(AfterDelete, beforeDelete - 1);
+        }
 
         [TestMethod]
         public void UpdateTest()
         {
-            Company company = new Company { Id = 99999, Name = "CompanyNameTest", IsActive = false, IsAdmin = false, CVR = "CVRTest"};
+            Company company = new Company { Name = "CompanyNameTest", IsActive = false, IsAdmin = false, CVR = "CVRTest" };
 
             unitOfWork.CompanyRepository.Add(company);
+            unitOfWork.Save();
 
             Assert.AreEqual("CompanyNameTest", company.Name);
             Assert.IsFalse(company.IsActive);
@@ -127,15 +141,15 @@ namespace GearHunter.Tests.DAL
             company.IsActive = true;
 
             unitOfWork.CompanyRepository.Update(company);
+            unitOfWork.Save();
 
-            company = unitOfWork.CompanyRepository.GetById(99999);
+            company = unitOfWork.CompanyRepository.GetById(unitOfWork.CompanyRepository.GetAll().Last().Id);
 
             Assert.AreEqual("UpdatedCompanyNameTest", company.Name);
             Assert.IsTrue(company.IsActive);
 
             unitOfWork.CompanyRepository.Delete(company);
         }
-
 
         [TestMethod]
         public void FindAllAsyncTest()
@@ -158,13 +172,13 @@ namespace GearHunter.Tests.DAL
         [TestMethod]
         public void FindByIdAsyncTest()
         {
-            Category category = new Category { Id = 999999, Name = "CategoryTest" };
+            Category category = new Category { Name = "CategoryTest" };
             unitOfWork.CategoryRepository.Add(category);
 
-            Category categoryFromDb = unitOfWork.CategoryRepository.FindByIdAsync(999999).Result;
+            Category categoryFromDb = unitOfWork.CategoryRepository.FindByIdAsync(unitOfWork.CategoryRepository.GetAll().Last().Id).Result;
 
             Assert.IsNotNull(categoryFromDb);
-            Assert.AreEqual(category, categoryFromDb);
+            Assert.AreEqual(category.Name, categoryFromDb.Name);
 
             unitOfWork.CategoryRepository.Delete(category);
         }
