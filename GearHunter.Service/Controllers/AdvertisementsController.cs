@@ -11,17 +11,19 @@ namespace GearHunter.Service.Controllers
 {
     public class AdvertisementsController : ApiController
     {
+        AdvertisementFacade advertisementFacade = new AdvertisementFacade();
+
         // GET api/advertisements
         public async Task<IEnumerable<Advertisement>> Get()
         {
-            List<Advertisement> advertisements = await new AdvertisementFacade().GetAdvertisementsAsync();
+            List<Advertisement> advertisements = await advertisementFacade.GetAdvertisementsAsync();
             return advertisements;
         }
 
         // GET api/advertisements/5
-        public string Get(int id)
+        public Advertisement Get(int id)
         {
-            return "value";
+            return advertisementFacade.GetAdvertisement(id);
         }
 
         // POST api/advertisements

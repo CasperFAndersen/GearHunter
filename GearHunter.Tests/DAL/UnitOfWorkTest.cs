@@ -182,5 +182,6 @@ namespace GearHunter.Tests.DAL
 
             unitOfWork.CategoryRepository.Delete(category);
         }
+
     }
 }
