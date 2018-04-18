@@ -12,28 +12,46 @@ namespace GearHunter.Tests.DAL
 
 
         [TestMethod]
+        public void AddUserTest()
+        {
+            Individual individual = new Individual
+            {
+                Id = 99999,
+                Name = "individualTestName",
+                Password = "idvidualTestPassword",
+                Address = "individualAdressTest",
+                IsActive = false,
+                IsAdmin = false,
+                IsValidated = false
+            };
+
+            unitOfWork.IndividualRepository.Add(individual);
+
+            Individual individualFromDB = unitOfWork.IndividualRepository.GetById(99999);
+
+            Assert.IsNotNull(individualFromDB);
+            Assert.AreEqual(individual.Name, individualFromDB.Name);
+            Assert.IsFalse(individualFromDB.IsActive);
+
+        }
+
+        [TestMethod]
         public void GetAllTest()
         {
             int beforeInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
-            Assert.AreEqual(0, beforeInsert);
 
-            Individual individual = new Individual{ Id = 000000, Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
+            Individual individual = new Individual{ Id = 000000, Name = "individualTestNavn", Password = "idvidualTestKode",
+                                                    Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
             int afterInsert = unitOfWork.IndividualRepository.GetAll().Count;
 
-            Assert.AreEqual(0, afterInsert - 1);
+            Assert.AreEqual(beforeInsert, afterInsert - 1);
 
             unitOfWork.IndividualRepository.Delete(individual);
             unitOfWork.Save();
-        }
-
-        [TestMethod]
-        public void GetAllAdvertisements()
-        {
-            Assert.AreNotEqual(0, unitOfWork.AdvertisementRepository.GetAll().Count);
         }
 
         [TestMethod]
@@ -53,6 +71,15 @@ namespace GearHunter.Tests.DAL
         [TestMethod]
         public void DeleteTest()
         {
+            Individual individual = new Individual
+            {
+                Name = "deleteTestUser",
+                IsActive = false,
+                IsAdmin = false,
+                IsValidated = false,
+                Id = 199999
+            };
+
             Advertisement advertisement = new Advertisement
             {
                 Id = 99999,
@@ -61,7 +88,8 @@ namespace GearHunter.Tests.DAL
                 IsActive = false,
                 IsDeliverable = false,
                 IsRentable = false,
-                Category = new Category { Name = "CategoryTest" }
+                Category = new Category { Name = "CategoryTest" },
+                User = individual,
             };
 
             unitOfWork.AdvertisementRepository.Add(advertisement);
@@ -70,8 +98,11 @@ namespace GearHunter.Tests.DAL
             Assert.IsNotNull(unitOfWork.AdvertisementRepository.GetById(99999));
 
             unitOfWork.AdvertisementRepository.Delete(advertisement);
+            unitOfWork.IndividualRepository.Delete(individual);
 
-            Assert.IsNull(unitOfWork.AdvertisementRepository.GetById(99999));
+            Advertisement adFromDB = unitOfWork.AdvertisementRepository.GetById(99999);
+
+            Assert.AreNotEqual(advertisement.CatchyHeader, adFromDB.CatchyHeader);
         }
 
         [TestMethod]
