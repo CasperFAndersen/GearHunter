@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GearHunter.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -18,6 +20,8 @@ namespace GearHunter.Service
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //This line here does not fix our tests. 
+            //Database.SetInitializer<GearHunterDbContext>(null);
         }
     }
 }

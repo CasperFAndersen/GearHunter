@@ -56,6 +56,18 @@
     <Compile Include="Migrations\201804172036410_Initial.Designer.cs">
       <DependentUpon>201804172036410_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804181055200_new migration after api works.cs" />
+    <Compile Include="Migrations\201804181055200_new migration after api works.Designer.cs">
+      <DependentUpon>201804181055200_new migration after api works.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804181107025_modelchangeafterdatabasecreating.cs" />
+    <Compile Include="Migrations\201804181107025_modelchangeafterdatabasecreating.Designer.cs">
+      <DependentUpon>201804181107025_modelchangeafterdatabasecreating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804181118148_testing if new migration will work.cs" />
+    <Compile Include="Migrations\201804181118148_testing if new migration will work.Designer.cs">
+      <DependentUpon>201804181118148_testing if new migration will work.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -73,6 +85,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804172036410_Initial.resx">
       <DependentUpon>201804172036410_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181055200_new migration after api works.resx">
+      <DependentUpon>201804181055200_new migration after api works.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181107025_modelchangeafterdatabasecreating.resx">
+      <DependentUpon>201804181107025_modelchangeafterdatabasecreating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181118148_testing if new migration will work.resx">
+      <DependentUpon>201804181118148_testing if new migration will work.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
