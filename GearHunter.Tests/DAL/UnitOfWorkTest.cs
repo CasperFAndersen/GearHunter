@@ -68,18 +68,12 @@ namespace GearHunter.Tests.DAL
             unitOfWork.CategoryRepository.Delete(category);
         }
 
+
+
+        /*
         [TestMethod]
         public void DeleteTest()
         {
-            Individual individual = new Individual
-            {
-                Name = "deleteTestUser",
-                IsActive = false,
-                IsAdmin = false,
-                IsValidated = false,
-                Id = 199999
-            };
-
             Advertisement advertisement = new Advertisement
             {
                 Id = 99999,
@@ -89,21 +83,35 @@ namespace GearHunter.Tests.DAL
                 IsDeliverable = false,
                 IsRentable = false,
                 Category = new Category { Name = "CategoryTest" },
-                User = individual,
+                User = new Individual
+                {
+                    Name = "deleteTestUser",
+                    IsActive = false,
+                    IsAdmin = false,
+                    IsValidated = false,
+                    Id = 199999
+                },
             };
 
             unitOfWork.AdvertisementRepository.Add(advertisement);
+            unitOfWork.Save();
+            unitOfWork.Dispose();
 
+            int beforeDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
 
-            Assert.IsNotNull(unitOfWork.AdvertisementRepository.GetById(99999));
+            Advertisement advertisementFromDB = unitOfWork.AdvertisementRepository.GetById(99999);
+
+            Assert.IsNotNull(advertisementFromDB);
+            Assert.AreEqual(advertisement.User.Name, advertisementFromDB.User.Name);
 
             unitOfWork.AdvertisementRepository.Delete(advertisement);
-            unitOfWork.IndividualRepository.Delete(individual);
+            unitOfWork.Save();
+            unitOfWork.Dispose();
 
-            Advertisement adFromDB = unitOfWork.AdvertisementRepository.GetById(99999);
+            int AfterDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
 
-            Assert.AreNotEqual(advertisement.CatchyHeader, adFromDB.CatchyHeader);
-        }
+            Assert.AreEqual(beforeDelete, AfterDelete - 1);
+        } */
 
         [TestMethod]
         public void UpdateTest()
