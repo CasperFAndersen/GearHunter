@@ -21,8 +21,7 @@ namespace GearHunter.Tests.DAL
                 Password = "idvidualTestPassword",
                 Address = "individualAdressTest",
                 IsActive = false,
-                IsAdmin = false,
-                IsValidated = false
+                IsAdmin = false
             };
 
             unitOfWork.IndividualRepository.Add(individual);
@@ -53,7 +52,6 @@ namespace GearHunter.Tests.DAL
                 Address = "individualVejTest25",
                 IsActive = false,
                 IsAdmin = false,
-                IsValidated = false
             };
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
@@ -101,7 +99,6 @@ namespace GearHunter.Tests.DAL
                     Name = "deleteTestUser",
                     IsActive = false,
                     IsAdmin = false,
-                    IsValidated = false,
                     Id = 199999
                 },
             };
@@ -156,7 +153,7 @@ namespace GearHunter.Tests.DAL
         {
             int beforeInsert = unitOfWork.IndividualRepository.FindAllAsync().Result.Count;
 
-            Individual individual = new Individual { Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false, IsValidated = false };
+            Individual individual = new Individual { Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false };
 
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
