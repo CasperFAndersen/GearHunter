@@ -20,7 +20,7 @@ namespace GearHunter.Service.Controllers
         public async Task<IEnumerable<Advertisement>> Get()
         {
             List<Advertisement> advertisements = await advertisementFacade.GetAdvertisementsAsync();
-            //return advertisements;
+            return advertisements;
         }
 
         // GET api/advertisements/5
