@@ -63,5 +63,11 @@ namespace GearHunter.BLL
         {
             return _unitOfWork.CompanyRepository.FindByIdAsync(id);
         }
+
+        public void ValidateIndividual(Company company, bool validate)
+        {
+            userHelper.ValidateUser(company, validate);
+            _unitOfWork.CompanyRepository.Update(company);
+        }
     }
 }

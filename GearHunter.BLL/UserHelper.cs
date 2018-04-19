@@ -18,5 +18,10 @@ namespace GearHunter.BLL
             Company tempCompany = companyFacade.GetByEmail(email);
             return (tempIndividual == null && tempCompany == null) ? true : false;
         }
+
+        internal void ValidateUser(User user, bool validate)
+        {
+            user.isValidated = validate;
+        }
     }
 }

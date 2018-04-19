@@ -66,5 +66,11 @@ namespace GearHunter.BLL
         {
             return _unitOfWork.IndividualRepository.GetByEmail(email);
         }
+
+        public void ValidateIndividual(Individual individual, bool validate)
+        {
+            userHelper.ValidateUser(individual, validate);
+            _unitOfWork.IndividualRepository.Update(individual);
+        }
     }
 }

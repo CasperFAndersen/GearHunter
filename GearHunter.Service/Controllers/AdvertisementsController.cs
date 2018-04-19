@@ -64,7 +64,7 @@ namespace GearHunter.Service.Controllers
 
                 //if (advertisementFacade.DeleteAdvertisement(advertisementFacade.GetAdvertisement(id))
                 //{
-                //    Request.CreateResponse(HttpStatusCode.OK);
+                //    Request.CreateResponse(HttpStatusCode.Created);
                 //}
                 else
                 {

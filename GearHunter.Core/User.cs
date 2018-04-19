@@ -12,6 +12,7 @@
         public string Phone { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
+        public bool isValidated { get; set; }
 
         public User()
         {
@@ -29,6 +30,22 @@
             Phone = phone;
             IsAdmin = isAdmin;
             IsActive = isActive;
+            isValidated = false;
+        }
+
+        public User(int id, string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        {
+            Id = id; 
+            Name = name;
+            Address = address;
+            Zip = zip;
+            City = city;
+            Email = email;
+            Password = password;
+            Phone = phone;
+            IsAdmin = isAdmin;
+            IsActive = isActive;
+            isValidated = false;
         }
     }
 }

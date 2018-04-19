@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201804181118148_testing if new migration will work.Designer.cs">
       <DependentUpon>201804181118148_testing if new migration will work.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804191042049_changes to model regarding ID.cs" />
+    <Compile Include="Migrations\201804191042049_changes to model regarding ID.Designer.cs">
+      <DependentUpon>201804191042049_changes to model regarding ID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804181118148_testing if new migration will work.resx">
       <DependentUpon>201804181118148_testing if new migration will work.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191042049_changes to model regarding ID.resx">
+      <DependentUpon>201804191042049_changes to model regarding ID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
