@@ -12,7 +12,6 @@ namespace GearHunter.BLL
     public class IndividualFacade
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
-        private UserHelper userHelper = new UserHelper();
 
         public IEnumerable<Individual> GetIndividuals()
         {
@@ -27,7 +26,7 @@ namespace GearHunter.BLL
         public void AddIndividual(Individual individual)
         {
             
-            if (!userHelper.EmailAlreadyExists(individual.Email))
+            if (!UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Add(individual);
                 _unitOfWork.Save();
@@ -38,7 +37,7 @@ namespace GearHunter.BLL
 
         public void UpdateIndividual(Individual individual)
         {
-            if (!userHelper.EmailAlreadyExists(individual.Email))
+            if (!UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Update(individual);
                 _unitOfWork.Save();
@@ -69,7 +68,7 @@ namespace GearHunter.BLL
 
         public void ValidateIndividual(Individual individual, bool validate)
         {
-            userHelper.ValidateUser(individual, validate);
+            UserHelper.ValidateUser(individual, validate);
             _unitOfWork.IndividualRepository.Update(individual);
         }
     }

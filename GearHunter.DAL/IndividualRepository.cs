@@ -18,7 +18,16 @@ namespace GearHunter.DAL
         }
         public Individual GetByEmail(string email)
         {
-            return dbSet.Find(email);
+            //return dbSet.Where(i => i.Email == email)
+            //    .Select(i => i)
+            //    .SingleOrDefault();
+
+            //Individual tempIndividual = (dbSet.Where(i => i.Email == email)).I
+            //return tempIndividual;
+            Individual tempindividual = dbSet.SqlQuery("SELECT User FROM Users WHERE Email='" + email + "'").FirstOrDefault();
+            return tempindividual;
+            //return dbSet.Where(x => x.Email == email).FirstOrDefault();
         }
+
     }
 }

@@ -29,23 +29,5 @@ namespace GearHunter.Tests.BLL
 
             individualFacade.DeleteIndividual(individualByEmail);
         }
-
-        [TestMethod]
-        public void getAllTest()
-        {
-            Assert.AreEqual(0, individualFacade.GetIndividuals().Count());
-        }
-
-        [TestMethod]
-        public void getAllPhotosTest()
-        {
-            Assert.AreEqual(0, photoFacade.GetPhotos().Count());
-        }
-
-        [TestMethod]
-        public void getAllAdvertisementsTest()
-        {
-            Assert.AreEqual(0, advertisementFacade.GetAdvertisements().Count());
-        }
     }
 }
