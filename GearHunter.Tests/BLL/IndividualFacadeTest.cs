@@ -16,18 +16,11 @@ namespace GearHunter.Tests.BLL
         [TestMethod]
         public void GetByEmailTest()
         {
-            // Individual Casper = new Individual("Casper Froberg", "DenDerVej 1", "9400", "Noerresundby", "Casper@fakemail.dk", "password1", "11111111", true, true, true)
-            Individual individual = new Individual() { Name = "GetByEmailTest", Email = "test@tester.dk" };
-            individualFacade.AddIndividual(individual);
-
-
-            Individual individualByEmail = individualFacade.GetByEmail("test@tester.dk");
+            Individual individualByEmail = individualFacade.GetByEmail("Casper@fakemail.dk");
 
             Assert.IsNotNull(individualByEmail);
-            Assert.AreEqual(individualByEmail.Name, "GetByEmailTest");
-            Assert.AreEqual(individualByEmail.Email, "test@tester.dk");
-
-            individualFacade.DeleteIndividual(individualByEmail);
+            Assert.AreEqual(individualByEmail.Name, "Casper Froberg");
+            Assert.AreEqual(individualByEmail.Email, "Casper@fakemail.dk");
         }
     }
 }
