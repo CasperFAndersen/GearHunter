@@ -18,7 +18,7 @@ namespace GearHunter.DAL
         }
         public Company GetByEmail(string email)
         {
-            return dbSet.Find(email);
+            return dbSet.SingleOrDefault(x => x.Email == email);
         }
 
 
