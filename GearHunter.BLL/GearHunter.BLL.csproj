@@ -43,6 +43,7 @@
     <Compile Include="AdvertisementFacade.cs" />
     <Compile Include="CategoryFacade.cs" />
     <Compile Include="CompanyFacade.cs" />
+    <Compile Include="Exceptions\EmailDoesNotExistsException.cs" />
     <Compile Include="Exceptions\EmailAlreadyExistsException.cs" />
     <Compile Include="IndividualFacade.cs" />
     <Compile Include="PhotoFacade.cs" />

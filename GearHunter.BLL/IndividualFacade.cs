@@ -37,12 +37,22 @@ namespace GearHunter.BLL
 
         public void UpdateIndividual(Individual individual)
         {
-            if (!UserHelper.EmailAlreadyExists(individual.Email))
+            if (UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Update(individual);
                 _unitOfWork.Save();
             }
-            else throw new EmailAlreadyExistsException("individual");
+            else throw new EmailDoesNotExistsException("Email does not exist!");
+        }
+
+        public void UpdateIndividualsEmail(Individual individual, string oldEmail)
+        {
+            if (UserHelper.EmailAlreadyExists(oldEmail))
+            {
+                _unitOfWork.IndividualRepository.Update(individual);
+                _unitOfWork.Save();
+            }
+            else throw new EmailDoesNotExistsException("Old Email does not exist!");
         }
 
         public void DeleteIndividual(Individual individual)

@@ -30,7 +30,7 @@ namespace GearHunter.DAL
             }
             return individual; */
 
-           return dbSet.SingleOrDefault(x => x.Email == email); 
+           return dbSet.FirstOrDefault(x => x.Email == email); 
         }
 
     }

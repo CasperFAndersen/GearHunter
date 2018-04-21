@@ -24,7 +24,7 @@ namespace GearHunter.Tests.BLL
         }
 
         [TestMethod]
-        public void AddIndividualTestTest()
+        public void AddIndividualTest()
         {
             Individual individual = new Individual() { Name = "AddIndividualTest", Email = "AddIndividualTest@test.test" };
             int beforeInsert = individualFacade.GetIndividuals().ToList().Count;
@@ -39,6 +39,56 @@ namespace GearHunter.Tests.BLL
             Assert.AreEqual(individualByEmail.Name, "AddIndividualTest");
             Assert.AreEqual(individualByEmail.Email, "AddIndividualTest@test.test");
             individualFacade.DeleteIndividual(individual);
+        }
+
+        [TestMethod]
+        public void UpdateIndividualTest()
+        {
+            Individual individual = new Individual() { Name = "UpdateIndividualTest", Email = "TestUpdate@email.com" };
+            individualFacade.AddIndividual(individual);
+            Individual temp = new Individual() { Name = individual.Name };
+
+            Individual individualFromEmail = individualFacade.GetByEmail("TestUpdate@email.com");
+
+            individualFromEmail.Name = "UpdatedNameTest";
+
+            individualFacade.UpdateIndividual(individualFromEmail);
+
+            Individual individualAfterUpdate = individualFacade.GetByEmail("TestUpdate@email.com");
+
+            Assert.IsNotNull(individualAfterUpdate);
+            Assert.AreEqual(individualAfterUpdate.Name, "UpdatedNameTest");
+            Assert.AreEqual(individualAfterUpdate.Email, "TestUpdate@email.com");
+            Assert.AreEqual(individualFromEmail.Id, individualAfterUpdate.Id);
+            Assert.AreNotEqual(temp.Name, individualAfterUpdate.Name);
+
+            individualFacade.DeleteIndividual(individualAfterUpdate);
+        }
+
+        [TestMethod]
+        public void UpdateIndividualEmailTest()
+        {
+            Individual individual = new Individual() { Name = "UpdateIndividualEmailTester", Email = "updateIndividualTest@tester.testdk" };
+            individualFacade.AddIndividual(individual);
+            Individual temp = new Individual() { Name = individual.Name, Email = individual.Email };
+
+            Individual individualFromEmail = individualFacade.GetByEmail("updateIndividualTest@tester.testdk");
+
+            individualFromEmail.Name = "UpdatedEmailTest";
+            individualFromEmail.Email = "UpdateIndividualEmail@gmail.com";
+
+            individualFacade.UpdateIndividualsEmail(individualFromEmail, temp.Email);
+
+            Individual individualAfterUpdate = individualFacade.GetByEmail(individualFromEmail.Email);
+
+            Assert.IsNotNull(individualAfterUpdate);
+            Assert.AreEqual(individualAfterUpdate.Name, "UpdatedEmailTest");
+            Assert.AreEqual(individualAfterUpdate.Email, "UpdateIndividualEmail@gmail.com");
+            Assert.AreEqual(individualFromEmail.Id, individualAfterUpdate.Id);
+            Assert.AreNotEqual(temp.Name, individualAfterUpdate.Name);
+            Assert.AreNotEqual(temp.Email, individualAfterUpdate.Email);
+
+            individualFacade.DeleteIndividual(individualAfterUpdate);
         }
     }
 }
