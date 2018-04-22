@@ -235,6 +235,8 @@
     <Compile Include="Controllers\Exceptions\AdvertisementWasNotAddedException.cs" />
     <Compile Include="Controllers\Exceptions\AdvertisementWasNotDeletedException.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndividualController.cs" />
+    <Compile Include="Controllers\Exceptions\IndividualWasNotAddedException.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
