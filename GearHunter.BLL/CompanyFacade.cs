@@ -29,7 +29,7 @@ namespace GearHunter.BLL
                 _unitOfWork.CompanyRepository.Add(company);
                 _unitOfWork.Save();
             }
-            else throw new EmailAlreadyExistsException("Company");
+            else throw new EmailAlreadyExistsException("Company email already exists");
         }
 
         public void UpdateCompany(Company company)

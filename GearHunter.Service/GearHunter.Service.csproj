@@ -231,6 +231,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertisementsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\Exceptions\CompanyWasNotAddedException.cs" />
     <Compile Include="Controllers\Exceptions\CategoryWasNotAddedException.cs" />
     <Compile Include="Controllers\Exceptions\AdvertisementWasNotAddedException.cs" />
     <Compile Include="Controllers\Exceptions\AdvertisementWasNotDeletedException.cs" />
