@@ -36,16 +36,16 @@ exports.get = (req, res, next) => {
 
 exports.create = (req, res, next) => {
   let params = [];
-  params.push(new Parameter("name", "NVARCHAR", req.body.name));
-  params.push(new Parameter("address", "NVARCHAR", req.body.name));
-  params.push(new Parameter("zip", "NVARCHAR", req.body.name));
-  params.push(new Parameter("city", "NVARCHAR", req.body.name));
-  params.push(new Parameter("email", "NVARCHAR", req.body.name));
-  params.push(new Parameter("password", "NVARCHAR", req.body.name));
-  params.push(new Parameter("phone", "NVARCHAR", req.body.name));
+  params.push(new Parameter("name", "NVarChar", req.body.name));
+  params.push(new Parameter("address", "NVarChar", req.body.address));
+  params.push(new Parameter("zip", "NVarChar", req.body.zip));
+  params.push(new Parameter("city", "NVarChar", req.body.city));
+  params.push(new Parameter("email", "NVarChar", req.body.email));
+  params.push(new Parameter("password", "NVarChar", req.body.password));
+  params.push(new Parameter("phone", "NVarChar", req.body.phone));
 
   db.executeSql(
-    "insert into Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) values ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), 0, 1, 0, 'Individual')",
+    "INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), 0, 1, 0, 'Individual')",
     function(data, err) {
       if (err) {
         httpMsg.show500(req, res, err);
