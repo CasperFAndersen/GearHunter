@@ -45,7 +45,8 @@ exports.create = (req, res, next) => {
   params.push(new Parameter("phone", "NVarChar", req.body.phone));
 
   db.executeSql(
-    "INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), 0, 1, 0, 'Individual')",
+    //"INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), 0, 1, 0, 'Individual')",
+    "INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ('fjols', 'fjols', '900123', 'fjols', 'fjols@fjols.dk', 'fjols', '1234', 0, 1, 0, 'Individual')",
     function(data, err) {
       if (err) {
         httpMsg.show500(req, res, err);
