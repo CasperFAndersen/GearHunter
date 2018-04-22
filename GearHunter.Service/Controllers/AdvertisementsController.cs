@@ -41,22 +41,24 @@ namespace GearHunter.Service.Controllers
         {
             try
             {
-                advertisementFacade.AddAdvertisement(new Advertisement
-                {
-                    CatchyHeader = advertisement.CatchyHeader,
-                    Brand = advertisement.Brand,
-                    Model = advertisement.Model,
-                    Price = advertisement.Price,
-                    Description = advertisement.Description,
-                    Address = advertisement.Address,
-                    Zip = advertisement.Zip,
-                    City = advertisement.City,
-                    IsDeliverable = advertisement.IsDeliverable,
-                    IsRentable = advertisement.IsRentable,
-                    Photos = advertisement.Photos,
-                    Category = advertisement.Category,
-                    User = advertisement.User
-                });
+                advertisementFacade.AddAdvertisement(advertisement.ToAdvertisement());
+                
+                //Metode ToAdvertisement() istedet for understående. Se AdvertisementModel.
+                //{
+                //    CatchyHeader = advertisement.CatchyHeader,
+                //    Brand = advertisement.Brand,
+                //    Model = advertisement.Model,
+                //    Price = advertisement.Price,
+                //    Description = advertisement.Description,
+                //    Address = advertisement.Address,
+                //    Zip = advertisement.Zip,
+                //    City = advertisement.City,
+                //    IsDeliverable = advertisement.IsDeliverable,
+                //    IsRentable = advertisement.IsRentable,
+                //    Photos = advertisement.Photos,
+                //    Category = advertisement.Category,
+                //    User = advertisement.User
+                //});
 
                 return Ok();
             }
