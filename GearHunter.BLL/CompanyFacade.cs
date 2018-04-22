@@ -34,12 +34,22 @@ namespace GearHunter.BLL
 
         public void UpdateCompany(Company company)
         {
-            if (!UserHelper.EmailAlreadyExists(company.Email))
+            if (UserHelper.EmailAlreadyExists(company.Email))
             {
                 _unitOfWork.CompanyRepository.Update(company);
                 _unitOfWork.Save();
             }
-            else throw new EmailAlreadyExistsException("Company");
+            else throw new EmailDoesNotExistsException("Email does not exist!");
+        }
+
+        public void UpdateCompaniesEmail(Company company, string oldEmail)
+        {
+            if (UserHelper.EmailAlreadyExists(oldEmail))
+            {
+                _unitOfWork.CompanyRepository.Update(company);
+                _unitOfWork.Save();
+            }
+            else throw new EmailDoesNotExistsException("Old Email does not exist!");
         }
 
         public Company GetByEmail(string email)
