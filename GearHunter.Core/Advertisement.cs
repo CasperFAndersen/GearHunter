@@ -29,7 +29,7 @@ namespace GearHunter.Core
         }
 
         public Advertisement(string catchyHeader, string brand, string model, double price, string description, 
-            string address, string zip, string city, bool isDeliverable, bool isRentable, DateTime? created, 
+            string address, string zip, string city, bool isDeliverable, bool isRentable, 
             List<Photo> photos, Category category, User user)
         {
             this.CatchyHeader = catchyHeader;
@@ -43,7 +43,7 @@ namespace GearHunter.Core
             this.IsDeliverable = isDeliverable;
             this.IsRentable = isRentable;
             this.IsActive = true;
-            this.Created = created;
+            this.Created = DateTime.Now;
             this.Photos = photos;
             this.Category = category;
             this.User = user;

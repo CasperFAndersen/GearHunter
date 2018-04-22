@@ -19,7 +19,7 @@
 
         }
 
-        public User(string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        public User(string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin)
         {
             Name = name;
             Address = address;
@@ -29,7 +29,7 @@
             Password = password;
             Phone = phone;
             IsAdmin = isAdmin;
-            IsActive = isActive;
+            IsActive = true;
             isValidated = false;
         }
 
