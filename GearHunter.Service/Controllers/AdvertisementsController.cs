@@ -17,18 +17,24 @@ namespace GearHunter.Service.Controllers
         AdvertisementFacade advertisementFacade = new AdvertisementFacade();
 
         // GET api/advertisements
+        [Route("api/advertisements")]
+        [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
             return Ok(await advertisementFacade.GetAdvertisementsAsync());
         }
 
         // GET api/advertisements/5
+        [Route("api/advertisements/{id:int}")]
+        [HttpGet]
         public async Task<IHttpActionResult> Get(int id)
         {
             Advertisement tempAdvertisement = await advertisementFacade.GetAdvertisementAsync(id);
             return Ok(tempAdvertisement);
         }
 
+        [Route("api/advertisements")]
+        [HttpPost]
         // POST api/advertisements
         //Create a new advertisement.
         public IHttpActionResult Post([FromBody] AdvertisementModel advertisement)
@@ -67,6 +73,8 @@ namespace GearHunter.Service.Controllers
         }
 
         // DELETE api/advertisements/5
+        [Route("api/advertisements/{id:int}")]
+        [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id)
         {
             try
