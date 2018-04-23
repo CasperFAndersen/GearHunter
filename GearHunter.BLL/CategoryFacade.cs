@@ -10,7 +10,7 @@ namespace GearHunter.BLL
 {
     public class CategoryFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
         public IEnumerable<Category> GetCategorys()
         {

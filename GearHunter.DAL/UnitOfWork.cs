@@ -9,6 +9,18 @@ namespace GearHunter.DAL
 {
     public class UnitOfWork : IDisposable
     {
+
+        private static UnitOfWork instance = new UnitOfWork();
+        private UnitOfWork() { }
+
+        public static UnitOfWork Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         private GearHunterDbContext context = new GearHunterDbContext();
         private GenericRepository<Advertisement> advertisementRepository;
         private GenericRepository<Category> categoryRepository;

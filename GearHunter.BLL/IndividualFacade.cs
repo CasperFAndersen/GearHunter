@@ -11,7 +11,7 @@ namespace GearHunter.BLL
 {
     public class IndividualFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
         public IEnumerable<Individual> GetIndividuals()
         {

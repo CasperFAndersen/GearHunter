@@ -10,7 +10,7 @@ namespace GearHunter.BLL
 {
     public class PhotoFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
         public IEnumerable<Photo> GetPhotos()
         {

@@ -7,7 +7,7 @@ namespace GearHunter.BLL
 {
     public class AdvertisementFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
         public IEnumerable<Advertisement> GetAdvertisements()
         {

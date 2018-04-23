@@ -9,7 +9,7 @@ namespace GearHunter.Tests.DAL
     [TestClass]
     public class UnitOfWorkTest
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork unitOfWork = UnitOfWork.Instance;
 
 
         [TestMethod]
