@@ -18,18 +18,6 @@ namespace GearHunter.DAL
         }
         public Individual GetByEmail(string email)
         {
-          /*  Individual individual = new Individual();
-
-            foreach (var item in GetAll())
-            {
-                if (item.Email.Equals(email))
-                {
-                    individual = item;
-                    break;
-                }
-            }
-            return individual; */
-
            return dbSet.FirstOrDefault(x => x.Email == email); 
         }
 
