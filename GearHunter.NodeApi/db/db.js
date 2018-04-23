@@ -2,12 +2,12 @@ const sqlDb = require("mssql");
 const settings = require("./settings");
 
 exports.executeSql = function(sql, callback, params = null) {
-  var conn = new sqlDb.ConnectionPool(settings.dbConfig);
+  var connection = new sqlDb.ConnectionPool(settings.dbConfig);
 
-  conn
+  connection
     .connect()
     .then(function() {
-      const req = new sqlDb.Request(conn);
+      const req = new sqlDb.Request(connection);
 
       //add input parameters if any were passed
       if (params) {

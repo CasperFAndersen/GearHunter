@@ -35,18 +35,23 @@ exports.get = (req, res, next) => {
 };
 
 exports.create = (req, res, next) => {
+  if (!req.body) return httpMsg.show500;
+
   let params = [];
-  params.push(new Parameter("name", "NVarChar", req.body.name));
-  params.push(new Parameter("address", "NVarChar", req.body.address));
-  params.push(new Parameter("zip", "NVarChar", req.body.zip));
-  params.push(new Parameter("city", "NVarChar", req.body.city));
-  params.push(new Parameter("email", "NVarChar", req.body.email));
-  params.push(new Parameter("password", "NVarChar", req.body.password));
-  params.push(new Parameter("phone", "NVarChar", req.body.phone));
+  params.push(new Parameter("Name", "NVarChar", req.body.Name));
+  params.push(new Parameter("Address", "NVarChar", req.body.Address));
+  params.push(new Parameter("Zip", "NVarChar", req.body.Zip));
+  params.push(new Parameter("City", "NVarChar", req.body.City));
+  params.push(new Parameter("Email", "NVarChar", req.body.Email));
+  params.push(new Parameter("Password", "NVarChar", req.body.Password));
+  params.push(new Parameter("Phone", "NVarChar", req.body.Phone));
+  params.push(new Parameter("isAdmin", "Bit", 0));
+  params.push(new Parameter("isActive", "Bit", 1));
+  params.push(new Parameter("isValidated", "Bit", 0));
+  params.push(new Parameter("Discriminator", "NVarChar", "Individual"));
 
   db.executeSql(
-    //"INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), 0, 1, 0, 'Individual')",
-    "INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ('fjols', 'fjols', '900123', 'fjols', 'fjols@fjols.dk', 'fjols', '1234', 0, 1, 0, 'Individual')",
+    "INSERT INTO Users(name, address, zip, city, email, password, phone, isAdmin, isActive, IsValidated, Discriminator) VALUES ((@name), (@address), (@zip), (@city), (@email), (@password), (@phone), (@isAdmin), (@isActive), (@isValidated), (@Discriminator))",
     function(data, err) {
       if (err) {
         httpMsg.show500(req, res, err);

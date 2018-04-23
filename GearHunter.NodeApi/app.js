@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const httpMsg = require("./db/httpMsgs");
+const bodyParser = require("body-parser");
+const expressValidator = require("express-validator");
 
 const individualRoutes = require("./api/routes/individuals");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //set up CORS to pass correct headers
 // https://www.youtube.com/watch?v=zoSJ3bNGPp0
