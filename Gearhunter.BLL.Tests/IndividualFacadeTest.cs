@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GearHunter.BLL;
 using GearHunter.Core;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GearHunter.Tests.BLL
+namespace GearHunter.BLL.Tests
 {
     [TestClass]
     public class IndividualFacadeTest

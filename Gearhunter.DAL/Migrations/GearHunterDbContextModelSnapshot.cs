@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
-namespace Gearhunter.DAL.Migrations
+namespace GearHunter.DAL.Migrations
 {
     [DbContext(typeof(GearHunterDbContext))]
     partial class GearHunterDbContextModelSnapshot : ModelSnapshot

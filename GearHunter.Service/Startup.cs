@@ -11,7 +11,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using GearHunter.DAL;
 
-namespace Gearhunter.Service
+namespace GearHunter.Service
 {
     public class Startup
     {

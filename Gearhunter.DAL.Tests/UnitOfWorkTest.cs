@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GearHunter.DAL;
 using GearHunter.Core;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GearHunter.Tests.DAL
+namespace GearHunter.DAL.Tests
 {
     [TestClass]
     public class UnitOfWorkTest

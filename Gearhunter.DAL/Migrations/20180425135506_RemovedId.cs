@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Gearhunter.DAL.Migrations
+namespace GearHunter.DAL.Migrations
 {
     public partial class RemovedId : Migration
     {
