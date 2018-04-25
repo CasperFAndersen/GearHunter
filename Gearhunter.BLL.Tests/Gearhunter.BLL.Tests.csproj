@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>GearHunter.BLL.Tests</AssemblyName>
+
+    <RootNamespace>GearHunter.BLL.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gearhunter.BLL\Gearhunter.BLL.csproj" />
-    <ProjectReference Include="..\Gearhunter.Core\Gearhunter.Core.csproj" />
+    <ProjectReference Include="..\Gearhunter.BLL\GearHunter.BLL.csproj" />
+    <ProjectReference Include="..\Gearhunter.Core\GearHunter.Core.csproj" />
   </ItemGroup>
 
 </Project>

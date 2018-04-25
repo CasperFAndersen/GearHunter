@@ -1,9 +1,7 @@
-﻿using System;
+﻿using GearHunter.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GearHunter.BLL;
-using GearHunter.Core;
 
-namespace GearHunter.Tests.BLL
+namespace GearHunter.BLL.Tests
 {
     [TestClass]
     public class CompanyFacadeTest

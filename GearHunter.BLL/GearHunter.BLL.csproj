@@ -2,11 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>GearHunter.BLL</AssemblyName>
+    <RootNamespace>GearHunter.BLL</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gearhunter.Core\Gearhunter.Core.csproj" />
-    <ProjectReference Include="..\Gearhunter.DAL\Gearhunter.DAL.csproj" />
+    <ProjectReference Include="..\Gearhunter.Core\GearHunter.Core.csproj" />
+    <ProjectReference Include="..\Gearhunter.DAL\GearHunter.DAL.csproj" />
   </ItemGroup>
 
 </Project>

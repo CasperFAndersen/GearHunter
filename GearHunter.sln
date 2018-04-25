@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.BLL", "Gearhunter.BLL\Gearhunter.BLL.csproj", "{482A0771-0653-41EA-A952-C80F3B14B092}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.BLL", "Gearhunter.BLL\GearHunter.BLL.csproj", "{482A0771-0653-41EA-A952-C80F3B14B092}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.Core", "Gearhunter.Core\Gearhunter.Core.csproj", "{AFD8960C-A0CD-4B5C-94D6-BD8F85E680D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.Core", "Gearhunter.Core\GearHunter.Core.csproj", "{AFD8960C-A0CD-4B5C-94D6-BD8F85E680D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.DAL", "Gearhunter.DAL\Gearhunter.DAL.csproj", "{3B40F812-1402-4BA1-94CF-A2F55D555065}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.DAL", "Gearhunter.DAL\GearHunter.DAL.csproj", "{3B40F812-1402-4BA1-94CF-A2F55D555065}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.Service", "Gearhunter.Service\Gearhunter.Service.csproj", "{324B3AAE-20B6-43DA-978D-4642A97298DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.Service", "Gearhunter.Service\GearHunter.Service.csproj", "{324B3AAE-20B6-43DA-978D-4642A97298DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.BLL.Tests", "Gearhunter.BLL.Tests\Gearhunter.BLL.Tests.csproj", "{2AEAB442-9E32-4016-8585-6056A054CBC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.BLL.Tests", "Gearhunter.BLL.Tests\GearHunter.BLL.Tests.csproj", "{2AEAB442-9E32-4016-8585-6056A054CBC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.DAL.Tests", "Gearhunter.DAL.Tests\Gearhunter.DAL.Tests.csproj", "{423430F0-BB60-4E98-A3B9-12B21976FB45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearHunter.DAL.Tests", "Gearhunter.DAL.Tests\GearHunter.DAL.Tests.csproj", "{423430F0-BB60-4E98-A3B9-12B21976FB45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
