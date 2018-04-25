@@ -17,7 +17,7 @@ namespace GearHunter.Service.Controllers
 
         // GET api/individual
         [Route("api/individual")]
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public async Task<IHttpActionResult> Get()
         {
             return Ok(await individualFacade.GetIndividualsAsync());

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.DAL
 {

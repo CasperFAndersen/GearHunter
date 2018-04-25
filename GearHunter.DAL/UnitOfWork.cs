@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GearHunter.Core;
-using GearHunter.DAL.Migrations;
 
 namespace GearHunter.DAL
 {
