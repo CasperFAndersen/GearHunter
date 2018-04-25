@@ -170,7 +170,9 @@ namespace GearHunter.Tests.DAL
         public void FindByIdAsyncTest()
         {
             Category category = new Category { Name = "CategoryTest" };
+
             unitOfWork.CategoryRepository.Add(category);
+            unitOfWork.Save();
 
             Category categoryFromDb = unitOfWork.CategoryRepository.FindByIdAsync(unitOfWork.CategoryRepository.GetAll().Last().Id).Result;
 

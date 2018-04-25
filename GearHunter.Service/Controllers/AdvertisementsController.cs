@@ -5,39 +5,44 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
 using GearHunter.BLL;
 using GearHunter.Core;
 using GearHunter.Service.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GearHunter.Service.Controllers
 {
-    public class AdvertisementsController : ApiController
+    [Route("api/[controller]")]
+    public class AdvertisementsController : Controller
     {
         AdvertisementFacade advertisementFacade = new AdvertisementFacade();
 
         // GET api/advertisements
-        [Route("api/advertisements")]
         [HttpGet]
-        public async Task<IHttpActionResult> Get()
+        public async Task<ActionResult> Get()
         {
             return Ok(await advertisementFacade.GetAdvertisementsAsync());
         }
 
         // GET api/advertisements/5
-        [Route("api/advertisements/{id:int}")]
-        [HttpGet]
-        public async Task<IHttpActionResult> Get(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(int id)
         {
+            try { 
             Advertisement tempAdvertisement = await advertisementFacade.GetAdvertisementAsync(id);
             return Ok(tempAdvertisement);
+            }
+            catch
+            {
+                return BadRequest("Site not found");
+            }
         }
 
         [Route("api/advertisements")]
         [HttpPost]
         // POST api/advertisements
         //Create a new advertisement.
-        public IHttpActionResult Post([FromBody] AdvertisementModel advertisement)
+        public ActionResult Post([FromBody] AdvertisementModel advertisement)
         {
             try
             {
@@ -77,7 +82,7 @@ namespace GearHunter.Service.Controllers
         // DELETE api/advertisements/5
         [Route("api/advertisements/{id:int}")]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {

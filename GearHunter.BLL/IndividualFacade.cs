@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
@@ -29,7 +29,10 @@ namespace GearHunter.BLL
             if (!UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Add(individual);
+
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailAlreadyExistsException("Individual");
              
@@ -40,7 +43,10 @@ namespace GearHunter.BLL
             if (UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Update(individual);
+
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailDoesNotExistsException("Email does not exist!");
         }
@@ -50,7 +56,10 @@ namespace GearHunter.BLL
             if (UserHelper.EmailAlreadyExists(oldEmail))
             {
                 _unitOfWork.IndividualRepository.Update(individual);
+
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
+                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailDoesNotExistsException("Old Email does not exist!");
         }
@@ -58,7 +67,10 @@ namespace GearHunter.BLL
         public void DeleteIndividual(Individual individual)
         {
             _unitOfWork.IndividualRepository.Delete(individual);
+
+            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
             _unitOfWork.Save();
+            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
         }
 
         public Task<List<Individual>> GetIndividualsAsync()

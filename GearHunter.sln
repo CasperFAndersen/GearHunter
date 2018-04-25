@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.Core", "Gearhunt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.DAL", "Gearhunter.DAL\Gearhunter.DAL.csproj", "{3B40F812-1402-4BA1-94CF-A2F55D555065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gearhunter.Service", "Gearhunter.Service\Gearhunter.Service.csproj", "{324B3AAE-20B6-43DA-978D-4642A97298DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.Service", "Gearhunter.Service\Gearhunter.Service.csproj", "{324B3AAE-20B6-43DA-978D-4642A97298DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gearhunter.BLL.Tests", "Gearhunter.BLL.Tests\Gearhunter.BLL.Tests.csproj", "{2AEAB442-9E32-4016-8585-6056A054CBC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.BLL.Tests", "Gearhunter.BLL.Tests\Gearhunter.BLL.Tests.csproj", "{2AEAB442-9E32-4016-8585-6056A054CBC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gearhunter.DAL.Tests", "Gearhunter.DAL.Tests\Gearhunter.DAL.Tests.csproj", "{423430F0-BB60-4E98-A3B9-12B21976FB45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gearhunter.DAL.Tests", "Gearhunter.DAL.Tests\Gearhunter.DAL.Tests.csproj", "{423430F0-BB60-4E98-A3B9-12B21976FB45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

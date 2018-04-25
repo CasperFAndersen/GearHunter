@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GearHunter.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.DAL
 {
@@ -27,6 +28,13 @@ namespace GearHunter.DAL
         private IndividualRepository individualRepository;
         private GenericRepository<Photo> photoRepository;
         private GenericRepository<User> userRepository;
+
+        public GearHunterDbContext Context {
+            get
+                {
+                return context;
+                }
+        }
 
         public GenericRepository<Advertisement> AdvertisementRepository
         {

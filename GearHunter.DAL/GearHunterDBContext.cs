@@ -10,9 +10,16 @@ namespace GearHunter.DAL
 {
     public class GearHunterDbContext : DbContext
     {
-        public GearHunterDbContext() : base("gearhunterConnection")
+
+        public GearHunterDbContext() { }
+
+        public GearHunterDbContext(DbContextOptions<GearHunterDbContext> options)
+            :base(options) { }
+
+        //TODO: Connection string needs to be added to the Gearhunter.Service appsettings.json file.
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
+            optionsBuilder.UseSqlServer("Server=kraka.ucn.dk;Database=dmab0916_1062358;User ID=dmab0916_1062358; Password=Password1!;");
         }
 
         public DbSet<Advertisement> Advertisements { get; set; }
