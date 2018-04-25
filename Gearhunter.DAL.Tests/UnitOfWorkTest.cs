@@ -99,7 +99,6 @@ namespace GearHunter.Tests.DAL
                     Name = "deleteTestUser",
                     IsActive = false,
                     IsAdmin = false,
-                    Id = 199999
                 },
             };
 

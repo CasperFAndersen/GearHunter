@@ -23,29 +23,19 @@ namespace GearHunter.BLL
         public void AddAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Add(advertisement);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements ON;");
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Users ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements OFF;");
         }
 
         public void UpdateAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Update(advertisement);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements OFF;");
         }
 
         public void DeleteAdvertisement(Advertisement advertisement)
         {
             _unitOfWork.AdvertisementRepository.Delete(advertisement);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Advertisements OFF;");
         }
 
         public Task<List<Advertisement>> GetAdvertisementsAsync()

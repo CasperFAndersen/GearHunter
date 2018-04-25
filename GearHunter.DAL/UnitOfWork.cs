@@ -29,13 +29,6 @@ namespace GearHunter.DAL
         private GenericRepository<Photo> photoRepository;
         private GenericRepository<User> userRepository;
 
-        public GearHunterDbContext Context {
-            get
-                {
-                return context;
-                }
-        }
-
         public GenericRepository<Advertisement> AdvertisementRepository
         {
             get

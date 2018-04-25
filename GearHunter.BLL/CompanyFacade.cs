@@ -28,10 +28,7 @@ namespace GearHunter.BLL
             if (!UserHelper.EmailAlreadyExists(company.Email))
             {
                 _unitOfWork.CompanyRepository.Add(company);
-
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailAlreadyExistsException("Company email already exists");
         }
@@ -41,10 +38,7 @@ namespace GearHunter.BLL
             if (UserHelper.EmailAlreadyExists(company.Email))
             {
                 _unitOfWork.CompanyRepository.Update(company);
-
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailDoesNotExistsException("Email does not exist!");
         }
@@ -54,10 +48,7 @@ namespace GearHunter.BLL
             if (UserHelper.EmailAlreadyExists(oldEmail))
             {
                 _unitOfWork.CompanyRepository.Update(company);
-
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
                 _unitOfWork.Save();
-                _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
             }
             else throw new EmailDoesNotExistsException("Old Email does not exist!");
         }
@@ -70,10 +61,7 @@ namespace GearHunter.BLL
         public void DeleteCompany(Company company)
         {
             _unitOfWork.CompanyRepository.Delete(company);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Users OFF;");
         }
 
         public Task<List<Company>> GetCompanysAsync()

@@ -26,28 +26,19 @@ namespace GearHunter.BLL
         public void AddCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Add(category);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories OFF;");
         }
 
         public void UpdateCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Update(category);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories OFF;");
         }
 
         public void DeleteCategory(Category category)
         {
             _unitOfWork.CategoryRepository.Delete(category);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Categories OFF;");
         }
 
         public Task<List<Category>> GetCategorysAsync()

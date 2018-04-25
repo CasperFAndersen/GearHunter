@@ -109,7 +109,6 @@ namespace GearHunter.Tests.BLL
                     Name = "deleteTestUser",
                     IsActive = false,
                     IsAdmin = false,
-                    Id = 199999
                 },
             };
             advertisementFacade.AddAdvertisement(advertisement);

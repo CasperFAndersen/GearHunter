@@ -26,28 +26,19 @@ namespace GearHunter.BLL
         public void AddPhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Add(photo);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos OFF;");
         }
 
         public void UpdatePhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Update(photo);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos OFF;");
         }
 
         public void DeletePhoto(Photo photo)
         {
             _unitOfWork.PhotoRepository.Delete(photo);
-
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos ON;");
             _unitOfWork.Save();
-            _unitOfWork.Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].Photos OFF;");
         }
 
         public Task<List<Photo>> GetPhotosAsync()
