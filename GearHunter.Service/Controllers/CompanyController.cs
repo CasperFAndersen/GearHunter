@@ -7,36 +7,33 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GearHunter.Service.Controllers
 {
-    public class CompanyController : ApiController
+    [Route("api/company")]
+    public class CompanyController : Controller
     {
         CompanyFacade companyFacade = new CompanyFacade();
 
         // GET api/company
-        [Route("api/company")]
         [HttpGet]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             return Ok(await companyFacade.GetCompanysAsync());
         }
 
         // GET api/company/5
-        [Route("api/company/{id:int}")]
-        [HttpGet]
-        public async Task<IHttpActionResult> Get(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
             Company tempCompany = await companyFacade.GetCompanyAsync(id);
             return Ok(tempCompany);
         }
 
-        [Route("api/company")]
-        [HttpPost]
         // POST api/company
-        //Create a new company.
-        public IHttpActionResult Post([FromBody] CompanyModel company)
+        [HttpPost]
+        public IActionResult Post([FromBody] CompanyModel company)
         {
             try
             {
@@ -51,14 +48,14 @@ namespace GearHunter.Service.Controllers
         }
 
         // PUT api/company/5
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/company/5
-        [Route("api/company/{id:int}")]
-        [HttpDelete]
-        public async Task<IHttpActionResult> Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {

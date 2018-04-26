@@ -9,7 +9,7 @@ namespace GearHunter.Service.Models
 {
     public class PhotoModel
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Filename { get; set; }
 

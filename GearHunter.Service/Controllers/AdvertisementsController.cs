@@ -38,10 +38,8 @@ namespace GearHunter.Service.Controllers
             }
         }
 
-        [Route("api/advertisements")]
         [HttpPost]
         // POST api/advertisements
-        //Create a new advertisement.
         public ActionResult Post([FromBody] AdvertisementModel advertisement)
         {
             try
@@ -75,13 +73,13 @@ namespace GearHunter.Service.Controllers
         }
 
         // PUT api/advertisements/5
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/advertisements/5
-        [Route("api/advertisements/{id:int}")]
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             try

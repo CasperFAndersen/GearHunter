@@ -9,35 +9,35 @@ using Microsoft.AspNetCore.Mvc;
 namespace GearHunter.Service.Controllers
 {
     [Route("api/[controller]")]
-    public class HomeController : Controller
+    public class ValuesController : Controller
     {
-        // GET: api/values
+        // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "hej", "value2" };
+            return new string[] { "You have reached a website used for a service", "You should go back to where you came from" };
         }
 
-        // GET api/values/5
+        // GET api/<controller>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT api/<controller>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

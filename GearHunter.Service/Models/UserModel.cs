@@ -8,7 +8,7 @@ namespace GearHunter.Service.Models
 {
     public class UserModel
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Zip { get; set; }
@@ -22,12 +22,20 @@ namespace GearHunter.Service.Models
 
         public UserModel()
         {
-
         }
+
+        //TODO: I think we should type convert like this, 
+        public static explicit operator UserModel(User user)
+        {
+            UserModel userModel = new UserModel();
+            userModel.Id = user.Id;
+            return userModel;
+        }
+
 
         public UserModel(User user)
         {
-            if(user == null)
+            if (user == null)
             {
                 return;
             }
@@ -40,6 +48,8 @@ namespace GearHunter.Service.Models
             Password = user.Password;
             Phone = user.Phone;
         }
+
+
 
         public User ToUser()
         {

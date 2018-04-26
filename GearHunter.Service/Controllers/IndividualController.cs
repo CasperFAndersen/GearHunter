@@ -7,36 +7,33 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GearHunter.Service.Controllers
 {
-    public class IndividualController : ApiController
+    [Route("api/[controller]")]
+    public class IndividualController : Controller
     {
         IndividualFacade individualFacade = new IndividualFacade();
 
         // GET api/individual
-        [Route("api/individual")]
-        [System.Web.Http.HttpGet]
-        public async Task<IHttpActionResult> Get()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
             return Ok(await individualFacade.GetIndividualsAsync());
         }
 
         // GET api/individual/5
-        [Route("api/individual/{id:int}")]
-        [HttpGet]
-        public async Task<IHttpActionResult> Get(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
             Individual tempIndividual = await individualFacade.GetIndividualAsync(id);
             return Ok(tempIndividual);
         }
 
-        [Route("api/individual")]
-        [HttpPost]
         // POST api/individual
-        //Create a new individual.
-        public IHttpActionResult Post([FromBody] IndividualModel Individual)
+        [HttpPost]
+        public IActionResult Post([FromBody] IndividualModel Individual)
         {
             try
             {
@@ -51,14 +48,14 @@ namespace GearHunter.Service.Controllers
         }
 
         // PUT api/individual/5
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/individual/5
-        [Route("api/individual/{id:int}")]
-        [HttpDelete]
-        public async Task<IHttpActionResult> Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
