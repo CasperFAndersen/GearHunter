@@ -18,7 +18,7 @@ namespace GearHunter.Service.Models
         public string Phone { get; set; }
         //public bool IsAdmin { get; set; }
         //public bool IsActive { get; set; }
-        //public bool isValidated { get; set; }
+        public bool IsValidated { get; set; }
 
         public UserModel()
         {
@@ -40,6 +40,7 @@ namespace GearHunter.Service.Models
                 return;
             }
 
+            Id = user.Id;
             Name = user.Name;
             Address = user.Address;
             Zip = user.Zip;
@@ -55,6 +56,7 @@ namespace GearHunter.Service.Models
         {
             return new User
             {
+                Id = Id,
                 Name = Name,
                 Address = Address,
                 Zip = Zip,

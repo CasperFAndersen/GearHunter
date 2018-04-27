@@ -25,9 +25,8 @@ namespace GearHunter.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             services.AddDbContext<GearHunterDbContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("GearhunterDatabase")));
-
+            GearHunterDbContext.ConnectionString = Configuration.GetConnectionString("GearHunterDatabase");
+             //services.AddDbContext<GearHunterDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("GearhunterDatabase")));
             services.AddMvc();
         }
 
