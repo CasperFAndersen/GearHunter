@@ -19,17 +19,17 @@ namespace GearHunter.Service.Controllers
 
         // GET api/advertisements
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public IActionResult Get()
         {
-            return Ok(await advertisementFacade.GetAdvertisementsAsync());
+            return Ok(advertisementFacade.GetAdvertisements());
         }
 
         // GET api/advertisements/5
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
             try { 
-            Advertisement tempAdvertisement = await advertisementFacade.GetAdvertisementAsync(id);
+            Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id);
             return Ok(tempAdvertisement);
             }
             catch
@@ -80,11 +80,11 @@ namespace GearHunter.Service.Controllers
 
         // DELETE api/advertisements/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                Advertisement tempAdvertisement = await advertisementFacade.GetAdvertisementAsync(id);
+                Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id);
 
                 if(tempAdvertisement == null)
                 {

@@ -1,4 +1,5 @@
-﻿using GearHunter.Core;
+﻿using System.Linq;
+using GearHunter.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GearHunter.BLL.Tests
@@ -14,12 +15,19 @@ namespace GearHunter.BLL.Tests
             Company company = new Company() {Name = "AddCompanyTest", Email = "AddCompanyTest@test.dk",
                                              isValidated = false, IsActive = false, IsAdmin = true };
 
-            int beforeInsert = companyFacade.GetCompanysAsync().Result.Count;
+            int beforeInsert = companyFacade.GetCompanies().Count();
             companyFacade.AddCompany(company);
-            int afterInsert = companyFacade.GetCompanysAsync().Result.Count;
+            int afterInsert = companyFacade.GetCompanies().Count();
 
             Assert.AreEqual(afterInsert - 1, beforeInsert);
             companyFacade.DeleteCompany(company);
+        }
+
+        [TestMethod]
+        public void GetByEmailTest()
+        {
+            Company company = companyFacade.GetByEmail("test");
+            Assert.IsNotNull(company);
         }
 
         [TestMethod]

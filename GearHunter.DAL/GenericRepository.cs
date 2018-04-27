@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.DAL
 {
+
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private GearHunterDbContext context;
@@ -19,12 +21,43 @@ namespace GearHunter.DAL
             this.dbSet = context.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        //Inspired by https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "")
+        {
+            IQueryable<TEntity> query = dbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+
+        public virtual TEntity GetById(object id)
+        {
+            return dbSet.Find(id);
+        }
+
+        public virtual void Add(TEntity entity)
         {
             dbSet.Add(entity);
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             if (context.Entry(entity).State == EntityState.Detached)
             {
@@ -33,32 +66,10 @@ namespace GearHunter.DAL
             dbSet.Remove(entity);
         }
 
-        public List<TEntity> GetAll()
-        {
-            return dbSet.ToList();
-        }
-
-        public TEntity GetById(int id)
-        {
-            return dbSet.Find(id);
-        }
-
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
-        }
-
-        //Async Methods
-
-        public async Task<List<TEntity>> FindAllAsync()
-        {
-            return await dbSet.ToListAsync();
-        }
-
-        public async Task<TEntity> FindByIdAsync(int id)
-        {
-            return await dbSet.FindAsync(id);
         }
 
     }

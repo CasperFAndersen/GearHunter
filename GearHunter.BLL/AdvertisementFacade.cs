@@ -12,7 +12,17 @@ namespace GearHunter.BLL
 
         public IEnumerable<Advertisement> GetAdvertisements()
         {
-            return _unitOfWork.AdvertisementRepository.GetAll();
+            return _unitOfWork.AdvertisementRepository.Get();
+        }
+
+        public IEnumerable<Advertisement> GetAdvertisementsByUserId(int id)
+        {
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.User.Id == id);
+        }
+
+        public IEnumerable<Advertisement> GetAdvertisementsByCategoryId(int id)
+        {
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.Category.Id == id);
         }
 
         public Advertisement GetAdvertisement(int id)
@@ -38,14 +48,5 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Advertisement>> GetAdvertisementsAsync()
-        {
-            return _unitOfWork.AdvertisementRepository.FindAllAsync();
-        }
-
-        public Task<Advertisement> GetAdvertisementAsync(int id)
-        {
-            return _unitOfWork.AdvertisementRepository.FindByIdAsync(id);
-        }
     }
 }

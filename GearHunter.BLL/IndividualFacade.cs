@@ -15,7 +15,7 @@ namespace GearHunter.BLL
 
         public IEnumerable<Individual> GetIndividuals()
         {
-            return _unitOfWork.IndividualRepository.GetAll();
+            return _unitOfWork.IndividualRepository.Get();
         }
 
         public Individual GetIndividual(int id)
@@ -61,19 +61,10 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Individual>> GetIndividualsAsync()
-        {
-            return _unitOfWork.IndividualRepository.FindAllAsync();
-        }
-
-        public Task<Individual> GetIndividualAsync(int id)
-        {
-            return _unitOfWork.IndividualRepository.FindByIdAsync(id);
-        }
-
+        //TODO: Check if this works - do I get an individual if that is the first, or is it "type-safe"?
         public Individual GetByEmail(string email)
         {
-            return _unitOfWork.IndividualRepository.GetByEmail(email);
+            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null, "individual").FirstOrDefault();
         }
 
         public void ValidateIndividual(Individual individual, bool validate)

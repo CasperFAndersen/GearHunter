@@ -26,7 +26,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
-            Individual individualFromDB = unitOfWork.IndividualRepository.GetById(unitOfWork.IndividualRepository.GetAll().Last().Id);
+            Individual individualFromDB = unitOfWork.IndividualRepository.GetById(unitOfWork.IndividualRepository.Get().Last().Id);
 
             Assert.IsNotNull(individualFromDB);
             Assert.AreEqual(individual.Name, individualFromDB.Name);
@@ -40,7 +40,7 @@ namespace GearHunter.DAL.Tests
         [TestMethod]
         public void GetAllTest()
         {
-            int beforeInsert = unitOfWork.IndividualRepository.GetAll().Count;
+            int beforeInsert = unitOfWork.IndividualRepository.Get().Count();
 
 
             Individual individual = new Individual
@@ -55,7 +55,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
-            int afterInsert = unitOfWork.IndividualRepository.GetAll().Count;
+            int afterInsert = unitOfWork.IndividualRepository.Get().Count();
 
             Assert.AreEqual(beforeInsert, afterInsert - 1);
 
@@ -70,7 +70,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.CategoryRepository.Add(category);
             unitOfWork.Save();
 
-            Category categoryFromDb = unitOfWork.CategoryRepository.GetById(unitOfWork.CategoryRepository.GetAll().Last().Id);
+            Category categoryFromDb = unitOfWork.CategoryRepository.GetById(unitOfWork.CategoryRepository.Get().Last().Id);
 
             Assert.IsNotNull(categoryFromDb);
             Assert.AreEqual(category, categoryFromDb);
@@ -105,9 +105,9 @@ namespace GearHunter.DAL.Tests
             unitOfWork.Save();
 
 
-            int beforeDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
+            int beforeDelete = unitOfWork.AdvertisementRepository.Get().Count();
 
-            Advertisement advertisementFromDB = unitOfWork.AdvertisementRepository.GetById(unitOfWork.AdvertisementRepository.GetAll().Last().Id);
+            Advertisement advertisementFromDB = unitOfWork.AdvertisementRepository.GetById(unitOfWork.AdvertisementRepository.Get().Last().Id);
 
             Assert.IsNotNull(advertisementFromDB);
             Assert.AreEqual(advertisement.User.Name, advertisementFromDB.User.Name);
@@ -116,7 +116,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.Save();
 
 
-            int AfterDelete = unitOfWork.AdvertisementRepository.GetAll().Count;
+            int AfterDelete = unitOfWork.AdvertisementRepository.Get().Count();
 
             Assert.AreEqual(AfterDelete, beforeDelete - 1);
         }
@@ -138,7 +138,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.CompanyRepository.Update(company);
             unitOfWork.Save();
 
-            company = unitOfWork.CompanyRepository.GetById(unitOfWork.CompanyRepository.GetAll().Last().Id);
+            company = unitOfWork.CompanyRepository.GetById(unitOfWork.CompanyRepository.Get().Last().Id);
 
             Assert.AreEqual("UpdatedCompanyNameTest", company.Name);
             Assert.IsTrue(company.IsActive);
@@ -149,14 +149,14 @@ namespace GearHunter.DAL.Tests
         [TestMethod]
         public void FindAllAsyncTest()
         {
-            int beforeInsert = unitOfWork.IndividualRepository.FindAllAsync().Result.Count;
+            int beforeInsert = unitOfWork.IndividualRepository.Get().Count();
 
             Individual individual = new Individual { Name = "individualTestNavn", Password = "idvidualTestKode", Address = "individualVejTest25", IsActive = false, IsAdmin = false };
 
             unitOfWork.IndividualRepository.Add(individual);
             unitOfWork.Save();
 
-            int afterInsert = unitOfWork.IndividualRepository.FindAllAsync().Result.Count;
+            int afterInsert = unitOfWork.IndividualRepository.Get().Count();
 
             Assert.AreEqual(beforeInsert, afterInsert - 1);
 
@@ -172,7 +172,7 @@ namespace GearHunter.DAL.Tests
             unitOfWork.CategoryRepository.Add(category);
             unitOfWork.Save();
 
-            Category categoryFromDb = unitOfWork.CategoryRepository.FindByIdAsync(unitOfWork.CategoryRepository.GetAll().Last().Id).Result;
+            Category categoryFromDb = unitOfWork.CategoryRepository.GetById(unitOfWork.CategoryRepository.Get().Last().Id);
 
             Assert.IsNotNull(categoryFromDb);
             Assert.AreEqual(category.Name, categoryFromDb.Name);

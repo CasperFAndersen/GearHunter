@@ -15,7 +15,7 @@ namespace GearHunter.BLL
 
         public IEnumerable<Photo> GetPhotos()
         {
-            return _unitOfWork.PhotoRepository.GetAll();
+            return _unitOfWork.PhotoRepository.Get();
         }
 
         public Photo GetPhoto(int id)
@@ -41,14 +41,5 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Photo>> GetPhotosAsync()
-        {
-            return _unitOfWork.PhotoRepository.FindAllAsync();
-        }
-
-        public Task<Photo> GetPhotoAsync(int id)
-        {
-            return _unitOfWork.PhotoRepository.FindByIdAsync(id);
-        }
     }
 }

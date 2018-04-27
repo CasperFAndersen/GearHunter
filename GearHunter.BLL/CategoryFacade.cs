@@ -13,9 +13,9 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Category> GetCategorys()
+        public IEnumerable<Category> GetCategories()
         {
-            return _unitOfWork.CategoryRepository.GetAll();
+            return _unitOfWork.CategoryRepository.Get();
         }
 
         public Category GetCategory(int id)
@@ -41,14 +41,5 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Category>> GetCategorysAsync()
-        {
-            return _unitOfWork.CategoryRepository.FindAllAsync();
-        }
-
-        public Task<Category> GetCategoryAsync(int id)
-        {
-            return _unitOfWork.CategoryRepository.FindByIdAsync(id);
-        }
     }
 }

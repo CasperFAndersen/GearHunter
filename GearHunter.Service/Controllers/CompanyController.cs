@@ -18,16 +18,16 @@ namespace GearHunter.Service.Controllers
 
         // GET api/company
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            return Ok(await companyFacade.GetCompanysAsync());
+            return Ok(companyFacade.GetCompanies());
         }
 
         // GET api/company/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            Company tempCompany = await companyFacade.GetCompanyAsync(id);
+            Company tempCompany = companyFacade.GetCompany(id);
             return Ok(tempCompany);
         }
 
@@ -55,11 +55,11 @@ namespace GearHunter.Service.Controllers
 
         // DELETE api/company/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                Company tempCompany = await companyFacade.GetCompanyAsync(id);
+                Company tempCompany = companyFacade.GetCompany(id);
 
                 if (tempCompany == null)
                 {

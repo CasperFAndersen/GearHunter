@@ -13,9 +13,9 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Company> GetCompanys()
+        public IEnumerable<Company> GetCompanies()
         {
-            return _unitOfWork.CompanyRepository.GetAll();
+            return _unitOfWork.CompanyRepository.Get();
         }
 
         public Company GetCompany(int id)
@@ -50,28 +50,18 @@ namespace GearHunter.BLL
                 _unitOfWork.CompanyRepository.Update(company);
                 _unitOfWork.Save();
             }
-            else throw new EmailDoesNotExistsException("Old Email does not exist!");
+            else throw new EmailDoesNotExistsException("Old email does not exist!");
         }
 
         public Company GetByEmail(string email)
         {
-            return _unitOfWork.CompanyRepository.GetByEmail(email);
+            return _unitOfWork.CompanyRepository.Get(company => company.Email == email).FirstOrDefault();
         }
 
         public void DeleteCompany(Company company)
         {
             _unitOfWork.CompanyRepository.Delete(company);
             _unitOfWork.Save();
-        }
-
-        public Task<List<Company>> GetCompanysAsync()
-        {
-            return _unitOfWork.CompanyRepository.FindAllAsync();
-        }
-
-        public Task<Company> GetCompanyAsync(int id)
-        {
-            return _unitOfWork.CompanyRepository.FindByIdAsync(id);
         }
 
         public void ValidateIndividual(Company company, bool validate)

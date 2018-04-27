@@ -18,22 +18,22 @@ namespace GearHunter.Service.Controllers
 
         // GET api/category
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public IActionResult Get()
         {
-            return Ok(await categoryFacade.GetCategorysAsync());
+            return Ok( categoryFacade.GetCategories());
         }
 
         // GET api/category/5
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            Category tempCategory = await categoryFacade.GetCategoryAsync(id);
+            Category tempCategory = categoryFacade.GetCategory(id);
             return Ok(tempCategory);
         }
 
         [HttpPost]
         // POST api/category
-        public ActionResult Post([FromBody] CategoryModel category)
+        public IActionResult Post([FromBody] CategoryModel category)
         {
             try
             {
@@ -55,11 +55,11 @@ namespace GearHunter.Service.Controllers
 
         // DELETE api/category/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                Category tempCategory = await categoryFacade.GetCategoryAsync(id);
+                Category tempCategory = categoryFacade.GetCategory(id);
 
                 if (tempCategory == null)
                 {
