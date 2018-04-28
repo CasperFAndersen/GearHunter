@@ -64,7 +64,7 @@ namespace GearHunter.BLL
         //TODO: Check if this works - do I get an individual if that is the first, or is it "type-safe"?
         public Individual GetByEmail(string email)
         {
-            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null, "individual")
+            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null)
                 .Result.FirstOrDefault();
         }
 

@@ -21,7 +21,15 @@ namespace GearHunter.DAL
         //This solution is inspired by https://code.msdn.microsoft.com/How-to-using-Entity-1464feea
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            //If optionsBuilder is not configured, a test-database is used
+            if (!optionsBuilder.IsConfigured && ConnectionString == null)
+            {
+                optionsBuilder.UseSqlServer(@"Data Source=.\SQLExpress;Initial Catalog=GearHunterTestDatabase;Integrated Security=True");
+            }
+            else
+            {
+                optionsBuilder.UseSqlServer(ConnectionString);
+            }
         }
 
         public DbSet<Advertisement> Advertisements { get; set; }

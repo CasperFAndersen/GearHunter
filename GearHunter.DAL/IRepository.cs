@@ -11,7 +11,8 @@ namespace GearHunter.DAL
     {
         Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "");
+            string includeProperties = ""
+            );
         Task<TEntity> GetById(object id);
         void Add(TEntity entity);
         void Delete(TEntity entity);
