@@ -10,22 +10,22 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Advertisement> GetAdvertisements()
+        public Task<IEnumerable<Advertisement>> GetAdvertisements()
         {
             return _unitOfWork.AdvertisementRepository.Get();
         }
 
         public IEnumerable<Advertisement> GetAdvertisementsByUserId(int id)
         {
-            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.User.Id == id);
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.User.Id == id).Result;
         }
 
         public IEnumerable<Advertisement> GetAdvertisementsByCategoryId(int id)
         {
-            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.Category.Id == id);
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.Category.Id == id).Result;
         }
 
-        public Advertisement GetAdvertisement(int id)
+        public Task<Advertisement> GetAdvertisement(int id)
         {
             return _unitOfWork.AdvertisementRepository.GetById(id);
         }

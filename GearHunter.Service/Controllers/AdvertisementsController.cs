@@ -29,7 +29,7 @@ namespace GearHunter.Service.Controllers
         public IActionResult Get(int id)
         {
             try { 
-            Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id);
+            Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id).Result;
             return Ok(tempAdvertisement);
             }
             catch
@@ -84,7 +84,7 @@ namespace GearHunter.Service.Controllers
         {
             try
             {
-                Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id);
+                Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id).Result;
 
                 if(tempAdvertisement == null)
                 {
@@ -98,7 +98,7 @@ namespace GearHunter.Service.Controllers
 
                 else
                 {
-                    advertisementFacade.DeleteAdvertisement(advertisementFacade.GetAdvertisement(id));
+                    advertisementFacade.DeleteAdvertisement(advertisementFacade.GetAdvertisement(id).Result);
                     return Ok();
                 }
 

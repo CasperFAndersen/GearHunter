@@ -13,12 +13,12 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Company> GetCompanies()
+        public Task<IEnumerable<Company>> GetCompanies()
         {
             return _unitOfWork.CompanyRepository.Get();
         }
 
-        public Company GetCompany(int id)
+        public Task<Company> GetCompany(int id)
         {
             return _unitOfWork.CompanyRepository.GetById(id);
         }
@@ -55,7 +55,7 @@ namespace GearHunter.BLL
 
         public Company GetByEmail(string email)
         {
-            return _unitOfWork.CompanyRepository.Get(company => company.Email == email).FirstOrDefault();
+            return _unitOfWork.CompanyRepository.Get(company => company.Email == email).Result.FirstOrDefault();
         }
 
         public void DeleteCompany(Company company)

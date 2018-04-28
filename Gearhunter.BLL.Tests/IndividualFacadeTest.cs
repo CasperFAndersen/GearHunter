@@ -28,9 +28,9 @@ namespace GearHunter.BLL.Tests
         public void AddIndividualTest()
         {
             Individual individual = new Individual() { Name = "AddIndividualTest", Email = "AddIndividualTest@test.test" };
-            int beforeInsert = individualFacade.GetIndividuals().ToList().Count;
+            int beforeInsert = individualFacade.GetIndividuals().Result.ToList().Count;
             individualFacade.AddIndividual(individual);
-            int AfterInsert = individualFacade.GetIndividuals().ToList().Count;
+            int AfterInsert = individualFacade.GetIndividuals().Result.ToList().Count;
 
             Assert.AreEqual(AfterInsert - 1, beforeInsert);
 
@@ -114,18 +114,16 @@ namespace GearHunter.BLL.Tests
 
 
 
-            int beforeDelete = advertisementFacade.GetAdvertisements().ToList().Count;
+            int beforeDelete = advertisementFacade.GetAdvertisements().Result.ToList().Count;
 
-            Advertisement advertisementFromDB = advertisementFacade.GetAdvertisement(advertisementFacade.GetAdvertisements().Last().Id);
+            Advertisement advertisementFromDB = advertisementFacade.GetAdvertisements().Result.Last();
 
             Assert.IsNotNull(advertisementFromDB);
             Assert.AreEqual(advertisement.User.Name, advertisementFromDB.User.Name);
 
             advertisementFacade.DeleteAdvertisement(advertisement);
 
-
-
-            int AfterDelete = advertisementFacade.GetAdvertisements().ToList().Count;
+            int AfterDelete = advertisementFacade.GetAdvertisements().Result.ToList().Count;
 
             Assert.AreEqual(AfterDelete, beforeDelete - 1);
         }

@@ -22,7 +22,7 @@ namespace GearHunter.DAL
         }
 
         //Inspired by https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
+        public virtual async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
@@ -39,22 +39,22 @@ namespace GearHunter.DAL
 
             if (orderBy != null)
             {
-                return orderBy(query).ToList();
+                return await orderBy(query).ToListAsync();
             }
             else
             {
-                return query.ToList();
+                return await query.ToListAsync();
             }
         }
 
-        public virtual TEntity GetById(object id)
+        public virtual async Task<TEntity> GetById(object id)
         {
-            return dbSet.Find(id);
+            return await dbSet.FindAsync(id);
         }
 
         public virtual void Add(TEntity entity)
         {
-            dbSet.Add(entity);
+            dbSet.AddAsync(entity);
         }
 
         public virtual void Delete(TEntity entity)

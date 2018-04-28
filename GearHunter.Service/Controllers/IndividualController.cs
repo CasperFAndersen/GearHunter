@@ -27,7 +27,7 @@ namespace GearHunter.Service.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Individual tempIndividual = individualFacade.GetIndividual(id);
+            Individual tempIndividual = individualFacade.GetIndividual(id).Result;
             return Ok(tempIndividual);
         }
 
@@ -59,7 +59,7 @@ namespace GearHunter.Service.Controllers
         {
             try
             {
-                Individual tempIndividual = individualFacade.GetIndividual(id);
+                Individual tempIndividual = individualFacade.GetIndividual(id).Result;
 
                 if (tempIndividual == null)
                 {
@@ -68,7 +68,7 @@ namespace GearHunter.Service.Controllers
 
                 else
                 {
-                    individualFacade.DeleteIndividual(individualFacade.GetIndividual(id));
+                    individualFacade.DeleteIndividual(individualFacade.GetIndividual(id).Result);
                     return Ok();
                 }
 

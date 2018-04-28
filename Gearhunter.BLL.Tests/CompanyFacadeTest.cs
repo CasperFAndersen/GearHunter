@@ -15,9 +15,9 @@ namespace GearHunter.BLL.Tests
             Company company = new Company() {Name = "AddCompanyTest", Email = "AddCompanyTest@test.dk",
                                              isValidated = false, IsActive = false, IsAdmin = true };
 
-            int beforeInsert = companyFacade.GetCompanies().Count();
+            int beforeInsert = companyFacade.GetCompanies().Result.Count();
             companyFacade.AddCompany(company);
-            int afterInsert = companyFacade.GetCompanies().Count();
+            int afterInsert = companyFacade.GetCompanies().Result.Count();
 
             Assert.AreEqual(afterInsert - 1, beforeInsert);
             companyFacade.DeleteCompany(company);

@@ -13,12 +13,12 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Photo> GetPhotos()
+        public Task<IEnumerable<Photo>> GetPhotos()
         {
             return _unitOfWork.PhotoRepository.Get();
         }
 
-        public Photo GetPhoto(int id)
+        public Task<Photo> GetPhoto(int id)
         {
             return _unitOfWork.PhotoRepository.GetById(id);
         }

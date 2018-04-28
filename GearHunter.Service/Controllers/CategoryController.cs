@@ -27,7 +27,7 @@ namespace GearHunter.Service.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Category tempCategory = categoryFacade.GetCategory(id);
+            Category tempCategory = categoryFacade.GetCategory(id).Result;
             return Ok(tempCategory);
         }
 
@@ -59,7 +59,7 @@ namespace GearHunter.Service.Controllers
         {
             try
             {
-                Category tempCategory = categoryFacade.GetCategory(id);
+                Category tempCategory = categoryFacade.GetCategory(id).Result;
 
                 if (tempCategory == null)
                 {
@@ -68,7 +68,7 @@ namespace GearHunter.Service.Controllers
 
                 else
                 {
-                    categoryFacade.DeleteCategory(categoryFacade.GetCategory(id));
+                    categoryFacade.DeleteCategory(categoryFacade.GetCategory(id).Result);
                     return Ok();
                 }
 

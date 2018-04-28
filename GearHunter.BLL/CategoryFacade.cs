@@ -13,12 +13,12 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Category> GetCategories()
+        public Task<IEnumerable<Category>> GetCategories()
         {
             return _unitOfWork.CategoryRepository.Get();
         }
 
-        public Category GetCategory(int id)
+        public Task<Category> GetCategory(int id)
         {
             return _unitOfWork.CategoryRepository.GetById(id);
         }

@@ -13,12 +13,12 @@ namespace GearHunter.BLL
     {
         private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Individual> GetIndividuals()
+        public Task<IEnumerable<Individual>> GetIndividuals()
         {
             return _unitOfWork.IndividualRepository.Get();
         }
 
-        public Individual GetIndividual(int id)
+        public Task<Individual> GetIndividual(int id)
         {
             return _unitOfWork.IndividualRepository.GetById(id);
         }
@@ -64,7 +64,8 @@ namespace GearHunter.BLL
         //TODO: Check if this works - do I get an individual if that is the first, or is it "type-safe"?
         public Individual GetByEmail(string email)
         {
-            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null, "individual").FirstOrDefault();
+            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null, "individual")
+                .Result.FirstOrDefault();
         }
 
         public void ValidateIndividual(Individual individual, bool validate)

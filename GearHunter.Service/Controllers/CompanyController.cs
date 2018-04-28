@@ -27,7 +27,7 @@ namespace GearHunter.Service.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Company tempCompany = companyFacade.GetCompany(id);
+            Company tempCompany = companyFacade.GetCompany(id).Result;
             return Ok(tempCompany);
         }
 
@@ -59,7 +59,7 @@ namespace GearHunter.Service.Controllers
         {
             try
             {
-                Company tempCompany = companyFacade.GetCompany(id);
+                Company tempCompany = companyFacade.GetCompany(id).Result;
 
                 if (tempCompany == null)
                 {
@@ -68,7 +68,7 @@ namespace GearHunter.Service.Controllers
 
                 else
                 {
-                    companyFacade.DeleteCompany(companyFacade.GetCompany(id));
+                    companyFacade.DeleteCompany(companyFacade.GetCompany(id).Result);
                     return Ok();
                 }
 
