@@ -13,4 +13,13 @@
       One of three columns
     </div>
   </div>
+  <div class="columns">
+    <div class="column is-one-third" *ngFor="let ad of (advertisements ? advertisements.slice(0,10): [])">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">{{ad.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

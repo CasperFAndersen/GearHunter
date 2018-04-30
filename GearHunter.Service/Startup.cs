@@ -26,8 +26,18 @@ namespace GearHunter.Service
         public void ConfigureServices(IServiceCollection services)
         {
             GearHunterDbContext.ConnectionString = Configuration.GetConnectionString("GearHunterDatabase");
-             //services.AddDbContext<GearHunterDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("GearhunterDatabase")));
+            //services.AddDbContext<GearHunterDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("GearhunterDatabase")));
+            services.AddCors(options =>
+                options.AddPolicy("AllowAllOrigins", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                }));
+            services.AddOptions();
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
