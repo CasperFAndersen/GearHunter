@@ -3,8 +3,13 @@
 </p>
 <div class="container">
   <div class="row">
-    <div class="col-sm">
-      One of three columns
+    <div class="col-sm" *ngFor="let ad of advertisements">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">{{ad.id}}</p>
+          <p class="title">{{ad.catchyHeader}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-sm">
       One of three columns
@@ -14,8 +19,6 @@
     </div>
   </div>
   <div>
-    <script>
-      window.alert("Jeg siger hallo, halloooooo")
-    </script>
+
   </div>
 </div>

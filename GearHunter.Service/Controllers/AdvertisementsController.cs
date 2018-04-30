@@ -21,7 +21,7 @@ namespace GearHunter.Service.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(advertisementFacade.GetAdvertisements());
+            return Ok(advertisementFacade.GetAdvertisements().Result);
         }
 
         // GET api/advertisements/5

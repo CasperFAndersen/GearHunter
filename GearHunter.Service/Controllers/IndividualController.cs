@@ -20,7 +20,7 @@ namespace GearHunter.Service.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(individualFacade.GetIndividuals());
+            return Ok(individualFacade.GetIndividuals().Result);
         }
 
         // GET api/individual/5
