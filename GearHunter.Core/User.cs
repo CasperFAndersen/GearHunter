@@ -1,7 +1,10 @@
-﻿namespace GearHunter.Core
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GearHunter.Core
 {
     public class User
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
@@ -12,13 +15,14 @@
         public string Phone { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
+        public bool isValidated { get; set; }
 
         public User()
         {
 
         }
 
-        public User(string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        public User(string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin)
         {
             Name = name;
             Address = address;
@@ -28,7 +32,23 @@
             Password = password;
             Phone = phone;
             IsAdmin = isAdmin;
+            IsActive = true;
+            isValidated = false;
+        }
+
+        public User(int id, string name, string address, string zip, string city, string email, string password, string phone, bool isAdmin, bool isActive)
+        {
+            Id = id; 
+            Name = name;
+            Address = address;
+            Zip = zip;
+            City = city;
+            Email = email;
+            Password = password;
+            Phone = phone;
+            IsAdmin = isAdmin;
             IsActive = isActive;
+            isValidated = false;
         }
     }
 }

@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
     public class IndividualFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
-        private UserHelper userHelper = new UserHelper();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Individual> GetIndividuals()
+        public Task<IEnumerable<Individual>> GetIndividuals()
         {
-            return _unitOfWork.IndividualRepository.GetAll();
+            return _unitOfWork.IndividualRepository.Get();
         }
 
-        public Individual GetIndividual(int id)
+        public Task<Individual> GetIndividual(int id)
         {
             return _unitOfWork.IndividualRepository.GetById(id);
         }
@@ -27,7 +26,7 @@ namespace GearHunter.BLL
         public void AddIndividual(Individual individual)
         {
             
-            if (!userHelper.EmailAlreadyExists(individual.Email))
+            if (!UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Add(individual);
                 _unitOfWork.Save();
@@ -38,12 +37,22 @@ namespace GearHunter.BLL
 
         public void UpdateIndividual(Individual individual)
         {
-            if (!userHelper.EmailAlreadyExists(individual.Email))
+            if (UserHelper.EmailAlreadyExists(individual.Email))
             {
                 _unitOfWork.IndividualRepository.Update(individual);
                 _unitOfWork.Save();
             }
-            else throw new EmailAlreadyExistsException("individual");
+            else throw new EmailDoesNotExistsException("Email does not exist!");
+        }
+
+        public void UpdateIndividualsEmail(Individual individual, string oldEmail)
+        {
+            if (UserHelper.EmailAlreadyExists(oldEmail))
+            {
+                _unitOfWork.IndividualRepository.Update(individual);
+                _unitOfWork.Save();
+            }
+            else throw new EmailDoesNotExistsException("Old Email does not exist!");
         }
 
         public void DeleteIndividual(Individual individual)
@@ -52,19 +61,17 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Individual>> GetIndividualsAsync()
-        {
-            return _unitOfWork.IndividualRepository.FindAllAsync();
-        }
-
-        public Task<Individual> GetIndividualAsync(int id)
-        {
-            return _unitOfWork.IndividualRepository.FindByIdAsync(id);
-        }
-
+        //TODO: Check if this works - do I get an individual if that is the first, or is it "type-safe"?
         public Individual GetByEmail(string email)
         {
-            return _unitOfWork.IndividualRepository.GetByEmail(email);
+            return _unitOfWork.IndividualRepository.Get(individual => individual.Email == email, null)
+                .Result.FirstOrDefault();
+        }
+
+        public void ValidateIndividual(Individual individual, bool validate)
+        {
+            UserHelper.ValidateUser(individual, validate);
+            _unitOfWork.IndividualRepository.Update(individual);
         }
     }
 }

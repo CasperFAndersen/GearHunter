@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GearHunter.Core;
-using GearHunter.DAL.Migrations;
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.DAL
 {
     public class UnitOfWork : IDisposable
     {
+
+        private static UnitOfWork instance = new UnitOfWork();
+        private UnitOfWork() { }
+
+        public static UnitOfWork Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         private GearHunterDbContext context = new GearHunterDbContext();
         private GenericRepository<Advertisement> advertisementRepository;
         private GenericRepository<Category> categoryRepository;
-        private CompanyRepository companyRepository;
-        private IndividualRepository individualRepository;
+        private GenericRepository<Company> companyRepository;
+        private GenericRepository<Individual> individualRepository;
         private GenericRepository<Photo> photoRepository;
         private GenericRepository<User> userRepository;
 
@@ -33,19 +45,19 @@ namespace GearHunter.DAL
             }
         }
 
-        public CompanyRepository CompanyRepository
+        public GenericRepository<Company> CompanyRepository
         {
             get
             {
-                return this.companyRepository ?? new CompanyRepository(context);
+                return this.companyRepository ?? new GenericRepository<Company>(context);
             }
         }
 
-        public IndividualRepository IndividualRepository
+        public GenericRepository<Individual> IndividualRepository
         {
             get
             {
-                return this.individualRepository ?? new IndividualRepository(context);
+                return this.individualRepository ?? new GenericRepository<Individual>(context);
             }
         }
 

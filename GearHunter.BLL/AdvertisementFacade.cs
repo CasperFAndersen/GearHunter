@@ -2,19 +2,30 @@
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
     public class AdvertisementFacade
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
 
-        public IEnumerable<Advertisement> GetAdvertisements()
+        public Task<IEnumerable<Advertisement>> GetAdvertisements()
         {
-            return _unitOfWork.AdvertisementRepository.GetAll();
+            return _unitOfWork.AdvertisementRepository.Get();
         }
 
-        public Advertisement GetAdvertisement(int id)
+        public IEnumerable<Advertisement> GetAdvertisementsByUserId(int id)
+        {
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.User.Id == id).Result;
+        }
+
+        public IEnumerable<Advertisement> GetAdvertisementsByCategoryId(int id)
+        {
+            return _unitOfWork.AdvertisementRepository.Get(advertisement => advertisement.Category.Id == id).Result;
+        }
+
+        public Task<Advertisement> GetAdvertisement(int id)
         {
             return _unitOfWork.AdvertisementRepository.GetById(id);
         }
@@ -37,14 +48,5 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public Task<List<Advertisement>> GetAdvertisementsAsync()
-        {
-            return _unitOfWork.AdvertisementRepository.FindAllAsync();
-        }
-
-        public Task<Advertisement> GetAdvertisementAsync(int id)
-        {
-            return _unitOfWork.AdvertisementRepository.FindByIdAsync(id);
-        }
     }
 }
