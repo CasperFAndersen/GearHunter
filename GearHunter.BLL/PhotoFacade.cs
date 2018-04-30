@@ -5,20 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
-using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
     public class PhotoFacade
     {
-        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
-        public Task<IEnumerable<Photo>> GetPhotos()
+        public IEnumerable<Photo> GetPhotos()
         {
-            return _unitOfWork.PhotoRepository.Get();
+            return _unitOfWork.PhotoRepository.GetAll();
         }
 
-        public Task<Photo> GetPhoto(int id)
+        public Photo GetPhoto(int id)
         {
             return _unitOfWork.PhotoRepository.GetById(id);
         }
@@ -41,5 +40,14 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
+        public Task<List<Photo>> GetPhotosAsync()
+        {
+            return _unitOfWork.PhotoRepository.FindAllAsync();
+        }
+
+        public Task<Photo> GetPhotoAsync(int id)
+        {
+            return _unitOfWork.PhotoRepository.FindByIdAsync(id);
+        }
     }
 }

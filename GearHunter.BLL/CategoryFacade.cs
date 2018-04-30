@@ -5,20 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
-using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
     public class CategoryFacade
     {
-        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
-        public Task<IEnumerable<Category>> GetCategories()
+        public IEnumerable<Category> GetCategorys()
         {
-            return _unitOfWork.CategoryRepository.Get();
+            return _unitOfWork.CategoryRepository.GetAll();
         }
 
-        public Task<Category> GetCategory(int id)
+        public Category GetCategory(int id)
         {
             return _unitOfWork.CategoryRepository.GetById(id);
         }
@@ -41,5 +40,14 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
+        public Task<List<Category>> GetCategorysAsync()
+        {
+            return _unitOfWork.CategoryRepository.FindAllAsync();
+        }
+
+        public Task<Category> GetCategoryAsync(int id)
+        {
+            return _unitOfWork.CategoryRepository.FindByIdAsync(id);
+        }
     }
 }

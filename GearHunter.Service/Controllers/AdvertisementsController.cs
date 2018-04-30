@@ -5,108 +5,75 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 using GearHunter.BLL;
 using GearHunter.Core;
-using GearHunter.Service.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GearHunter.Service.Controllers
 {
-    [Route("api/[controller]")]
-    public class AdvertisementsController : Controller
+    //TODO - vi skal bruge models i vores webapi for validation.
+    public class AdvertisementsController : ApiController
     {
         AdvertisementFacade advertisementFacade = new AdvertisementFacade();
 
         // GET api/advertisements
-        [HttpGet]
-        public IActionResult Get()
+        public async Task<IEnumerable<Advertisement>> Get()
         {
-            return Ok(advertisementFacade.GetAdvertisements());
+            List<Advertisement> advertisements = await advertisementFacade.GetAdvertisementsAsync();
+            //return advertisements;
         }
 
         // GET api/advertisements/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public Advertisement Get(int id)
         {
-            try { 
-            Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id).Result;
-            return Ok(tempAdvertisement);
-            }
-            catch
-            {
-                return BadRequest("Site not found");
-            }
+            return advertisementFacade.GetAdvertisement(id);
         }
 
-        [HttpPost]
         // POST api/advertisements
-        public ActionResult Post([FromBody] AdvertisementModel advertisement)
+        //Create a new advertisement.
+        public void Post([FromBody] Advertisement advertisement)
         {
-            try
-            {
-                advertisementFacade.AddAdvertisement(advertisement.ToAdvertisement());
-                
-                //Metode ToAdvertisement() istedet for understående. Se AdvertisementModel.
-                //{
-                //    CatchyHeader = advertisement.CatchyHeader,
-                //    Brand = advertisement.Brand,
-                //    Model = advertisement.Model,
-                //    Price = advertisement.Price,
-                //    Description = advertisement.Description,
-                //    Address = advertisement.Address,
-                //    Zip = advertisement.Zip,
-                //    City = advertisement.City,
-                //    IsDeliverable = advertisement.IsDeliverable,
-                //    IsRentable = advertisement.IsRentable,
-                //    Photos = advertisement.Photos,
-                //    Category = advertisement.Category,
-                //    User = advertisement.User
-                //});
 
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                //TODO: Skal vi sende Ex med videre her?
-                throw new AdvertisementWasNotAddedException("Something went wrong while trying to add your advertisement, try again.", ex);
-            }
         }
 
         // PUT api/advertisements/5
-        [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/advertisements/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
             try
             {
-                Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id).Result;
+                Advertisement tempAdvertisement = advertisementFacade.GetAdvertisement(id);
 
                 if(tempAdvertisement == null)
                 {
-                    return NotFound();
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
 
                 if(tempAdvertisement.IsActive == true)
                 {
-                    return BadRequest("Can not delete Advertisement because it is currently active.");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Can not delete Advertisement because it is currently active.");
                 }
+                //måske ikke nødvendigt med et kald mere til databasen her? Hvor vi henter den ovenover?
+                // kommer vel an på EF's måde at håndtere den på?
+                //++ skulle vi ændre så delete retunere true eller false afhængig af om det virker? 
+                //så kan vi bruge understående.
 
+                //if (advertisementFacade.DeleteAdvertisement(advertisementFacade.GetAdvertisement(id))
+                //{
+                //    Request.CreateResponse(HttpStatusCode.OK);
+                //}
                 else
                 {
-                    advertisementFacade.DeleteAdvertisement(advertisementFacade.GetAdvertisement(id).Result);
-                    return Ok();
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
-
             }
             catch(Exception ex)
             {
-                //TODO: Brug denne exception.
-                return BadRequest("The advertisement could not be deleted, please try again.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new AdvertisementWasNotDeletedException("The advertisement could not be deleted, please try again.", ex));
             }
         }
     }

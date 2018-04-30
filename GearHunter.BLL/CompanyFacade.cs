@@ -5,57 +5,47 @@ using System.Text;
 using System.Threading.Tasks;
 using GearHunter.Core;
 using GearHunter.DAL;
-using Microsoft.EntityFrameworkCore;
 
 namespace GearHunter.BLL
 {
     public class CompanyFacade
     {
-        private readonly UnitOfWork _unitOfWork = UnitOfWork.Instance;
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private UserHelper userHelper = new UserHelper();
 
-        public Task<IEnumerable<Company>> GetCompanies()
+        public IEnumerable<Company> GetCompanys()
         {
-            return _unitOfWork.CompanyRepository.Get();
+            return _unitOfWork.CompanyRepository.GetAll();
         }
 
-        public Task<Company> GetCompany(int id)
+        public Company GetCompany(int id)
         {
             return _unitOfWork.CompanyRepository.GetById(id);
         }
 
         public void AddCompany(Company company)
         {
-            if (!UserHelper.EmailAlreadyExists(company.Email))
+            if (!userHelper.EmailAlreadyExists(company.Email))
             {
                 _unitOfWork.CompanyRepository.Add(company);
                 _unitOfWork.Save();
             }
-            else throw new EmailAlreadyExistsException("Company email already exists");
+            else throw new EmailAlreadyExistsException("Company");
         }
 
         public void UpdateCompany(Company company)
         {
-            if (UserHelper.EmailAlreadyExists(company.Email))
+            if (!userHelper.EmailAlreadyExists(company.Email))
             {
                 _unitOfWork.CompanyRepository.Update(company);
                 _unitOfWork.Save();
             }
-            else throw new EmailDoesNotExistsException("Email does not exist!");
-        }
-
-        public void UpdateCompaniesEmail(Company company, string oldEmail)
-        {
-            if (UserHelper.EmailAlreadyExists(oldEmail))
-            {
-                _unitOfWork.CompanyRepository.Update(company);
-                _unitOfWork.Save();
-            }
-            else throw new EmailDoesNotExistsException("Old email does not exist!");
+            else throw new EmailAlreadyExistsException("Company");
         }
 
         public Company GetByEmail(string email)
         {
-            return _unitOfWork.CompanyRepository.Get(company => company.Email == email).Result.FirstOrDefault();
+            return _unitOfWork.CompanyRepository.GetByEmail(email);
         }
 
         public void DeleteCompany(Company company)
@@ -64,10 +54,14 @@ namespace GearHunter.BLL
             _unitOfWork.Save();
         }
 
-        public void ValidateIndividual(Company company, bool validate)
+        public Task<List<Company>> GetCompanysAsync()
         {
-            UserHelper.ValidateUser(company, validate);
-            _unitOfWork.CompanyRepository.Update(company);
+            return _unitOfWork.CompanyRepository.FindAllAsync();
+        }
+
+        public Task<Company> GetCompanyAsync(int id)
+        {
+            return _unitOfWork.CompanyRepository.FindByIdAsync(id);
         }
     }
 }

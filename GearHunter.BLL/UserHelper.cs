@@ -8,21 +8,15 @@ using System.Threading.Tasks;
 
 namespace GearHunter.BLL
 {
-    public static class UserHelper
+    public class UserHelper
     {
-        private static IndividualFacade individualFacade = new IndividualFacade();
-        private static CompanyFacade companyFacade = new CompanyFacade();
-
-        internal static bool EmailAlreadyExists(string email)
+        private IndividualFacade individualFacade = new IndividualFacade();
+        private CompanyFacade companyFacade = new CompanyFacade();
+        internal bool EmailAlreadyExists(string email)
         {
             Individual tempIndividual = individualFacade.GetByEmail(email);
             Company tempCompany = companyFacade.GetByEmail(email);
-            return (tempIndividual == null && tempCompany == null) ? false : true;
-        }
-
-        internal static void ValidateUser(User user, bool validate)
-        {
-            user.isValidated = validate;
+            return (tempIndividual == null && tempCompany == null) ? true : false;
         }
     }
 }

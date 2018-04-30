@@ -1,44 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace GearHunter.Service.Controllers
 {
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+    [Authorize]
+    public class ValuesController : ApiController
     {
-        // GET: api/<controller>
-        [HttpGet]
+        // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "You have reached a website used for a service", "You should go back to where you came from" };
+            return new string[] { "value1", "value2" };
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
+        // GET api/values/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<controller>
-        [HttpPost]
+        // POST api/values
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
+        // PUT api/values/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
+        // DELETE api/values/5
         public void Delete(int id)
         {
         }
