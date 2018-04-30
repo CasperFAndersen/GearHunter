@@ -28,13 +28,13 @@ namespace GearHunter.Service
             GearHunterDbContext.ConnectionString = Configuration.GetConnectionString("GearHunterDatabase");
             //services.AddDbContext<GearHunterDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("GearhunterDatabase")));
             services.AddCors(options =>
-                options.AddPolicy("AllowAllOrigins", builder =>
-                {
-                    builder.AllowAnyOrigin()
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials();
-                }));
+                        .AllowCredentials());
+            });
             services.AddOptions();
             services.AddMvc();
 
@@ -47,6 +47,7 @@ namespace GearHunter.Service
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("CorsPolicy");
 
             app.UseMvc();
         }
